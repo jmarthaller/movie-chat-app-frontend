@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 // import './App.css';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from "./Header";
 import UserProfile from './UserProfile';
 import RuntimeFilter from "./RuntimeFilter.js";
@@ -14,7 +14,7 @@ import SignUp from './SignUp';
 
 function App() {
   const [moviesState, setMoviesState] = useState([])
-  const [currentUser, setCurrentUser] = useState(null)
+  // const [currentUser, setCurrentUser] = useState(null)
 
   useEffect(() => {
     fetch('http://localhost:3001/movies')
@@ -22,7 +22,7 @@ function App() {
     .then(data => setMoviesState(data));
   }, [])
 
-  console.log(moviesState)
+  // console.log(moviesState)
 
 
   return (
@@ -38,10 +38,10 @@ function App() {
             <Login />
           </Route>
           <Route exact path='/'>
+            <Search />
             <GenreFilter />
             <RuntimeFilter />
-            <MoviesContainer />
-            <Search />
+            <MoviesContainer moviesState={moviesState} />
           </Route>
           <Route path='/profile'>
             <UserProfile />
