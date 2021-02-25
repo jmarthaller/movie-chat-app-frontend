@@ -3,13 +3,17 @@ import MoviesTile from './MoviesTile';
 
 
 
-function MoviesContainer({  moviesState }) {
+function MoviesContainer({  movies, selectedGenre }) {
+
+    const filteredByGenre = movies.filter((movie) => {
+        return movie.genre.includes(selectedGenre)
+    })
 
 
-
-    const allMovies = moviesState.map((movie) => {
+    const allMovies = filteredByGenre.map((movie) => {
         return <MoviesTile 
         key={movie.id}
+        id={movie.id}
         title={movie.title}
         runtime={movie.runtime}
         image={movie.image}
@@ -19,6 +23,7 @@ function MoviesContainer({  moviesState }) {
         releaseYear={movie.release_year}
         overview={movie.overview}
         reviews={movie.reviews}
+        // handleReview={handleReview}
         />
     })
 

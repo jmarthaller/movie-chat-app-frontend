@@ -21,13 +21,21 @@ function App() {
     setSelectedGenre(e.target.value)
   }
 
-
-
   useEffect(() => {
     fetch('http://localhost:3001/movies')
     .then(response => response.json())
     .then(data => setMoviesState(data));
   }, [])
+
+
+
+  const updatedMovies = moviesState.filter((movie) => {
+    return movie.title.toLowerCase().includes(search.toLowerCase())
+  })
+
+  // function handleReview(id) {
+  //   console.log(id)
+  // }
 
 
   return (
@@ -47,7 +55,7 @@ function App() {
             <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
             <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
             <RuntimeFilter />
-            <MoviesContainer moviesState={moviesState} />
+            <MoviesContainer movies={updatedMovies} selectedGenre={selectedGenre}  />
           </>
           )
           :
