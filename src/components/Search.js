@@ -2,10 +2,16 @@ import React from 'react';
 
 
 
-function Search() {
+function Search({ search, setSearch }) {
     return (
-        <div>
-            <h1>Hello from Search</h1>
+        <div className="search">
+            <input
+            type="text"
+            id="search"
+            placeholder="Search by Movie Title"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            />
         </div>
     );
 }

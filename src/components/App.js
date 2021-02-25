@@ -13,13 +13,21 @@ import SignUp from './SignUp';
 function App() {
   const [moviesState, setMoviesState] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
+  const [search, setSearch] = useState("")
+  const [selectedGenre, setSelectedGenre] = useState("")
+
+
+  function handleGenreChange(e) {
+    setSelectedGenre(e.target.value)
+  }
+
+
 
   useEffect(() => {
     fetch('http://localhost:3001/movies')
     .then(response => response.json())
     .then(data => setMoviesState(data));
   }, [])
-
 
 
   return (
@@ -36,8 +44,8 @@ function App() {
           <Route exact path='/'>
           {currentUser ? (
           <>
-            <Search />
-            <GenreFilter />
+            <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
+            <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
             <RuntimeFilter />
             <MoviesContainer moviesState={moviesState} />
           </>

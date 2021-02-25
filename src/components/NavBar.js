@@ -19,7 +19,7 @@ function NavBar({ currentUser, resetCurrentUser }) {
           
 
           <NavLink to="/" className="nav-link">
-            Home
+            Browse Movies
           </NavLink>
         {currentUser ? (
         <>

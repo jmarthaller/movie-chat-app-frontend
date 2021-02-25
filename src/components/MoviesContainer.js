@@ -24,6 +24,7 @@ function MoviesContainer({  moviesState }) {
 
     return (
         <div>
+            <h1>Popular Films This Week</h1>
             {allMovies}
         </div>
     )
