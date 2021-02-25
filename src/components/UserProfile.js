@@ -2,10 +2,10 @@ import React from 'react';
 
 
 
-function UserProfile() {
+function UserProfile({ currentUser }) {
     return (
         <div>
-            <h1>Hello from UserProfile</h1>
+            <h1>Welcome {currentUser.username}</h1>
         </div>
     );
 }

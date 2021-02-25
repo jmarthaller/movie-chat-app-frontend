@@ -2,13 +2,13 @@ import React from 'react';
 import NavBar from './NavBar'
 
 
-function Header() {
+function Header({ currentUser, resetCurrentUser }) {
     return (
         <div className="header">
-            <h1>Hello Header</h1>
-            <NavBar  />
+            <NavBar currentUser={currentUser} resetCurrentUser={resetCurrentUser} />
         </div>
     )
 }
 
 export default Header;
+

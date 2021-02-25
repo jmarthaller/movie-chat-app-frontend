@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from "./Header";
@@ -14,7 +12,7 @@ import SignUp from './SignUp';
 
 function App() {
   const [moviesState, setMoviesState] = useState([])
-  // const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null)
 
   useEffect(() => {
     fetch('http://localhost:3001/movies')
@@ -22,29 +20,39 @@ function App() {
     .then(data => setMoviesState(data));
   }, [])
 
-  // console.log(moviesState)
 
 
   return (
     <div className="App">
-      {/* <h1>Hello</h1> */}
       <Router>
-        <Header />
+        <Header currentUser={currentUser} resetCurrentUser={setCurrentUser} />
         <Switch>
           <Route path='/signup'>
             <SignUp />
           </Route>
           <Route path='/login'>
-            <Login />
+            <Login setCurrentUser={setCurrentUser} />
           </Route>
           <Route exact path='/'>
+          {currentUser ? (
+          <>
             <Search />
             <GenreFilter />
             <RuntimeFilter />
             <MoviesContainer moviesState={moviesState} />
+          </>
+          )
+          :
+          <h1>Please Login or Signup</h1>
+          }
           </Route>
           <Route path='/profile'>
-            <UserProfile />
+            {currentUser ? (
+              <UserProfile currentUser={currentUser} />
+            )
+            :
+            <h1>Please Login or Signup</h1>
+          }
           </Route>
         </Switch>
       </Router>
