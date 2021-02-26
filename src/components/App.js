@@ -8,11 +8,12 @@ import MoviesContainer from "./MoviesContainer";
 import Search from "./Search";
 import Login from './Login';
 import SignUp from './SignUp';
+import MoviePage from './MoviePage';
 
 
 function App() {
   const [moviesState, setMoviesState] = useState([])
-  // const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
   const [search, setSearch] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
@@ -36,6 +37,12 @@ function App() {
     fetch('http://localhost:3001/movies')
     .then(response => response.json())
     .then(data => setMoviesState(data));
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:3001/reviews')
+    .then(response => response.json())
+    .then(data => setReviews(data));
   }, [])
 
 
@@ -83,6 +90,14 @@ function App() {
           <Route path='/profile'>
             {currentUser ? (
               <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            )
+            :
+            <h1>Please Login or Signup</h1>
+          }
+          </Route>
+          <Route path='/movies/:id'>
+            {currentUser ? (
+              <MoviePage currentUser={currentUser}  />
             )
             :
             <h1>Please Login or Signup</h1>

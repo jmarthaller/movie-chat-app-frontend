@@ -1,12 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 
 function MoviesTile({ id, title, genre, runtime, tagline, rating, releaseYear, overview, image, reviews }) {
 
-    function handleReview() {
-        console.log(id)
-    }
 
     return (
         <div>
@@ -16,7 +14,9 @@ function MoviesTile({ id, title, genre, runtime, tagline, rating, releaseYear, o
             <h4>{releaseYear}</h4>
             <h4>Runtime: {runtime} minutes</h4>
             <h5>{tagline}</h5>
-            <button onClick={handleReview}>Review Movie</button>
+            <Link to={`/movies/${id}`}>
+                Review Movie
+            </Link>
         </div>
     )
 }
