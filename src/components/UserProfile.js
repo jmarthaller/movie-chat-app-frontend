@@ -5,11 +5,12 @@ import UserReviews from './UserReviews';
 
 
 
-function UserProfile({ currentUser, resetCurrentUser }) {
+function UserProfile({ currentUser, resetCurrentUser, reviews }) {
     const [canEditAccount, setCanEditAccount] = useState(false)
     const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [avatar, setAvatar] = useState('')
 
     function toggleEditProfile() {
         setCanEditAccount(!canEditAccount)
@@ -34,18 +35,24 @@ function UserProfile({ currentUser, resetCurrentUser }) {
 
     function handleNameChange(event) {
         setUsername(event.target.value);
-      }
+    }
     
-      function handlePasswordChange(event) {
+    function handlePasswordChange(event) {
         setPassword(event.target.value);
-      }
+    }
+
+    function handleAvatarChange(event) {
+        setAvatar(event.target.value);
+    }
 
     function handleUpdateAccount(e) {
         e.preventDefault()
     //   resetCurrentUser(null)
     //   history.push("/login");
         const formData = {
-            // username
+            username,
+            avatar,
+            password
         }
 
         fetch(`http://localhost:3001/users/1`, {
@@ -53,7 +60,7 @@ function UserProfile({ currentUser, resetCurrentUser }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({formData}),
+      body: JSON.stringify({"username": formData.username, "avatar": formData.avatar, "password": formData.password}),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -70,7 +77,7 @@ function UserProfile({ currentUser, resetCurrentUser }) {
     return (
         <div>
             <h1>Welcome {currentUser.username}!</h1>
-            <img className="profile-pic" style={{height: "75px"}} src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Screen_Shot_for_avatar_image_hosting.png" alt="profile-logo"></img>
+            <img className="profile-pic" style={{height: "75px"}} src={currentUser.avatar} alt="profile-logo"></img>
             <button onClick={toggleEditProfile}>{canEditAccount ? "Nevermind" : "Edit Account"}</button>
             {canEditAccount ?
             <div>
@@ -82,6 +89,10 @@ function UserProfile({ currentUser, resetCurrentUser }) {
                 <label>
                 Change Password:
                     <input type="text" name="password" value={password} onChange={handlePasswordChange} />
+                </label>
+                <label>
+                Change Avatar:
+                    <input type="text" name="avatar" value={avatar} onChange={handleAvatarChange} />
                 </label>
                 <input type="submit" value="Submit" />
             </form>

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 
-function UserReviews({ author, authorImage, movieTitle, movieImage, content }) {
+function UserReviews({ id, author, authorImage, movieTitle, movieImage, content }) {
     const [canEditReview, setCanEditReview] = useState(false)
     const [canDeleteReview, setCanDeleteReview] = useState(false)
     const [updatedContent, setUpdatedContent] = useState('')
+
+
+    const history = useHistory()
 
 
     function toggleEditReview() {
@@ -17,33 +21,36 @@ function UserReviews({ author, authorImage, movieTitle, movieImage, content }) {
 
     function handleContentChange(event) {
         setUpdatedContent(event.target.value);
-      }
+    }
 
 
     function handleUpdateReview(e) {
         e.preventDefault()
-    //   resetCurrentUser(null)
-    //   history.push("/login");
         const formData = {
-            updatedContent
+            content: updatedContent
         }
-        console.log(formData.updatedContent)
-    //     fetch(`http://localhost:3001/users/1`, {
-    //   method: "PATCH", // or 'PUT'
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({formData}),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Success:", data);
-    //   })
+        console.log(id)
+      fetch(`http://localhost:3001/reviews/${id}`, {
+      method: "PATCH", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({"content": formData.content}),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        history.push("/profile");
+      })
     }
 
-    function handleDeleteReview(e) {
-        e.preventDefault()
-        console.log('hi from the delete review')
+    function handleDeleteReview() {
+        fetch(`http://localhost:3001/reviews/${id}`, {
+      method: "DELETE", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
     }
 
     
@@ -71,7 +78,7 @@ function UserReviews({ author, authorImage, movieTitle, movieImage, content }) {
             {canDeleteReview ?
             <div>
                 <h2>Are you SURE you want to delete your review?</h2>
-                <button onSubmit={e => handleDeleteReview(e)}>Yes, Delete</button>
+                <button onClick={handleDeleteReview}>Yes, Delete</button>
             </div>
             :
             null

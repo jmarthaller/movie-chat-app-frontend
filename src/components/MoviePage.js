@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 
 
-function MoviePage({ currentUser, onAddReview }) {
+function MoviePage({ currentUser, onAddReview, reviews, setReviews }) {
     const [newContent, setNewContent] = useState("")
     const [movieToDisplay, setMovieToDisplay] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
@@ -47,7 +47,8 @@ function MoviePage({ currentUser, onAddReview }) {
         })
         .then((r) => r.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
+            setReviews([...reviews, data])
             history.push("/profile");
         })
     }

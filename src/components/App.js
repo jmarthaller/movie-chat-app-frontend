@@ -89,7 +89,7 @@ function App() {
           </Route>
           <Route path='/profile'>
             {currentUser ? (
-              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} />
+              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} />
             )
             :
             <h1>Please Login or Signup</h1>
@@ -97,7 +97,7 @@ function App() {
           </Route>
           <Route path='/movies/:id'>
             {currentUser ? (
-              <MoviePage currentUser={currentUser}  />
+              <MoviePage currentUser={currentUser} reviews={reviews} setReviews={setReviews} />
             )
             :
             <h1>Please Login or Signup</h1>
