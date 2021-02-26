@@ -47,16 +47,15 @@ function UserProfile({ currentUser, resetCurrentUser, reviews }) {
 
     function handleUpdateAccount(e) {
         e.preventDefault()
-    //   resetCurrentUser(null)
-    //   history.push("/login");
+        
         const formData = {
             username,
             avatar,
             password
         }
 
-        fetch(`http://localhost:3001/users/1`, {
-      method: "PATCH", // or 'PUT'
+        fetch(`http://localhost:3001/users/${currentUser.id}`, {
+      method: "PATCH", 
       headers: {
         "Content-Type": "application/json",
       },
