@@ -6,17 +6,17 @@ import UserReviews from './UserReviews';
 
 
 function UserProfile({ currentUser, resetCurrentUser }) {
-    const [canEdit, setCanEdit] = useState(false)
-    const [canDelete, setCanDelete] = useState(false)
+    const [canEditAccount, setCanEditAccount] = useState(false)
+    const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     function toggleEditProfile() {
-        setCanEdit(!canEdit)
+        setCanEditAccount(!canEditAccount)
     }
 
     function toggleDeleteProfile() {
-        setCanDelete(!canDelete)
+        setCanDeleteAccount(!canDeleteAccount)
     }
 
     const allReviews = currentUser.reviews.map((review) => {
@@ -45,7 +45,7 @@ function UserProfile({ currentUser, resetCurrentUser }) {
     //   resetCurrentUser(null)
     //   history.push("/login");
         const formData = {
-            username
+            // username
         }
 
         fetch(`http://localhost:3001/users/1`, {
@@ -71,8 +71,8 @@ function UserProfile({ currentUser, resetCurrentUser }) {
         <div>
             <h1>Welcome {currentUser.username}!</h1>
             <img className="profile-pic" style={{height: "75px"}} src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Screen_Shot_for_avatar_image_hosting.png" alt="profile-logo"></img>
-            <button onClick={toggleEditProfile}>{canEdit ? "Nevermind" : "Edit Account"}</button>
-            {canEdit ?
+            <button onClick={toggleEditProfile}>{canEditAccount ? "Nevermind" : "Edit Account"}</button>
+            {canEditAccount ?
             <div>
             <form onSubmit={handleUpdateAccount}>
                 <label>
@@ -89,8 +89,8 @@ function UserProfile({ currentUser, resetCurrentUser }) {
             :
             null
             }
-            <button onClick={toggleDeleteProfile}>{canDelete ? "I would Never!" : "Delete Account"}</button>
-            {canDelete ?
+            <button onClick={toggleDeleteProfile}>{canDeleteAccount ? "I would Never!" : "Delete Account"}</button>
+            {canDeleteAccount ?
             <div>
                 <h2>Are you SURE you want to delete your account</h2>
                 <button onSubmit={e => handleDeleteAccount(e)}>Yes, I'd like to be banished to the shadow realm</button>
@@ -98,7 +98,7 @@ function UserProfile({ currentUser, resetCurrentUser }) {
             :
             null
             }
-            <h1>Recent Reviews</h1>
+            <h1>Your Reviews</h1>
             {allReviews}
         </div>
     );

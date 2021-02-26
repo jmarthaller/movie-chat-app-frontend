@@ -3,9 +3,9 @@ import MoviesTile from './MoviesTile';
 
 
 
-function MoviesContainer({  movies, selectedGenre }) {
+function MoviesContainer({  updatedMovies, selectedGenre }) {
 
-    const filteredByGenre = movies.filter((movie) => {
+    const filteredByGenre = updatedMovies.filter((movie) => {
         return movie.genre.includes(selectedGenre)
     })
 

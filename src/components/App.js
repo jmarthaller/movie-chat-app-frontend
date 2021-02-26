@@ -12,13 +12,24 @@ import SignUp from './SignUp';
 
 function App() {
   const [moviesState, setMoviesState] = useState([])
+  // const [reviews, setReviews] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
   const [search, setSearch] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
+  const [selectedRuntime, setSelectedRuntime] = useState(null)
 
+
+// function to add review when form complete. also uncomment line with reviews in state
+//   function onAddReview(newReview) {
+//     setReviews([...reviews, newReview])
+// }
 
   function handleGenreChange(e) {
     setSelectedGenre(e.target.value)
+  }
+
+  function handleRuntimeChange(e) {
+    setSelectedRuntime(e.target.value)
   }
 
   useEffect(() => {
@@ -33,10 +44,17 @@ function App() {
     return movie.title.toLowerCase().includes(search.toLowerCase())
   })
 
-  // function handleReview(id) {
-  //   console.log(id)
+
+  
+  
+
+  // if (selectedRuntime) {
+  //   moviesState.filter((movie) => {
+  //     return movie.runtime
+  //   })
   // }
 
+ 
 
   return (
     <div className="App">
@@ -44,7 +62,7 @@ function App() {
         <Header currentUser={currentUser} resetCurrentUser={setCurrentUser} />
         <Switch>
           <Route path='/signup'>
-            <SignUp />
+            <SignUp setCurrentUser={setCurrentUser} />
           </Route>
           <Route path='/login'>
             <Login setCurrentUser={setCurrentUser} />
@@ -54,8 +72,8 @@ function App() {
           <>
             <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
             <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
-            <RuntimeFilter />
-            <MoviesContainer movies={updatedMovies} selectedGenre={selectedGenre}  />
+            <RuntimeFilter handleRuntimeChange={handleRuntimeChange} />
+            <MoviesContainer updatedMovies={updatedMovies} selectedGenre={selectedGenre}  />
           </>
           )
           :
