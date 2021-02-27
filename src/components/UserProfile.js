@@ -12,6 +12,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [avatar, setAvatar] = useState('')
+    const [accountUpdated, setAccountUpdated] = useState(false)
 
     const  history = useHistory()
 
@@ -62,11 +63,13 @@ function UserProfile({ currentUser, setCurrentUser, reviews }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({"username": formData.username, "avatar": formData.avatar, "password": formData.password}),
+      body: JSON.stringify(formData),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        // console.log("Success:", data);
+        setAccountUpdated(!accountUpdated)
+        history.push("/profile");
       })
     }
 
