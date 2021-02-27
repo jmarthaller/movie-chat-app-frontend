@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UserReviews from './UserReviews';
+import { useHistory } from 'react-router-dom';
 
 
 
 
-function UserProfile({ currentUser, resetCurrentUser, reviews }) {
+function UserProfile({ currentUser, setCurrentUser, reviews }) {
     const [canEditAccount, setCanEditAccount] = useState(false)
     const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [avatar, setAvatar] = useState('')
+
+    const  history = useHistory()
 
     function toggleEditProfile() {
         setCanEditAccount(!canEditAccount)
@@ -47,7 +50,7 @@ function UserProfile({ currentUser, resetCurrentUser, reviews }) {
 
     function handleUpdateAccount(e) {
         e.preventDefault()
-        
+
         const formData = {
             username,
             avatar,
@@ -67,9 +70,15 @@ function UserProfile({ currentUser, resetCurrentUser, reviews }) {
       })
     }
 
-    function handleDeleteAccount(e) {
-        e.preventDefault()
-        console.log('hi from the delete')
+    function handleDeleteAccount() {
+        fetch(`http://localhost:3001/users/${currentUser.id}`, {
+        method: "DELETE", 
+        headers: {
+        "Content-Type": "application/json",
+      },
+    })
+        setCurrentUser(null)
+        history.push("/");
     }
 
 
@@ -103,7 +112,7 @@ function UserProfile({ currentUser, resetCurrentUser, reviews }) {
             {canDeleteAccount ?
             <div>
                 <h2>Are you SURE you want to delete your account</h2>
-                <button onSubmit={e => handleDeleteAccount(e)}>Yes, I'd like to be banished to the shadow realm</button>
+                <button onClick={handleDeleteAccount}>Yes, I'd like to be banished to the shadow realm</button>
             </div>
             :
             null

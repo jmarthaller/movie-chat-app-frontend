@@ -10,7 +10,7 @@ function NavBar({ currentUser, resetCurrentUser }) {
     function handleLogout() {
       resetCurrentUser(null)
       history.push("/");
-    }
+  }
 
     return (
         <div>
