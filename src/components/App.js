@@ -18,7 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [search, setSearch] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
-
+  const [selectedRuntime, setSelectedRuntime] = useState(null)
 
 
 
@@ -58,7 +58,9 @@ function App() {
     setSelectedGenre(e.target.value)
   }
 
-  
+  function handleRuntimeChange(e) {
+    setSelectedRuntime(e.target.value)
+  }
 
   useEffect(() => {
     fetch('http://localhost:3001/movies')
@@ -83,7 +85,21 @@ function App() {
   //   })
   // }
 
-
+  // Q for Rianna OfficeHours: Is it bad to pass down moviesState to try to have this other filter
+  // How can I make these two filters work independently?
+  const updatedMoviesForTime = moviesState.filter((movie) => {
+    if (selectedRuntime === 'short') {
+      return movie.runtime < 90 && movie.title.toLowerCase().includes(search.toLowerCase())
+    } else if (selectedRuntime === 'medium') {
+      return movie.runtime > 90 && movie.runtime < 100 && movie.title.toLowerCase().includes(search.toLowerCase())
+    } else if (selectedRuntime === 'mediumish') {
+      return movie.runtime > 100 && movie.runtime < 120 && movie.title.toLowerCase().includes(search.toLowerCase())
+    } else if (selectedRuntime === 'long') {
+      return movie.runtime > 120 && movie.title.toLowerCase().includes(search.toLowerCase())
+    } else {
+      return movie
+    }
+  })
 
  
 
@@ -103,8 +119,8 @@ function App() {
           <>
             <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
             <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
-            <RuntimeFilter  />
-            <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre}  />
+            <RuntimeFilter handleRuntimeChange={handleRuntimeChange} />
+            <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre} updatedMoviesForTime={updatedMoviesForTime} selectedRuntime={selectedRuntime} />
           </>
           )
           :

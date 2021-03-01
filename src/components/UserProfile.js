@@ -63,6 +63,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         authorImage={review.author_image}
         movieTitle={review.movie_title}
         movieImage={review.movie_image}
+        personalRating={review.personal_rating}
         content={review.content}
         onUpdateReview={onUpdateReview}
         onDeleteReview={onDeleteReview}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 
-function UserReviews({ id, author, authorImage, movieTitle, movieImage, content, onUpdateReview, onDeleteReview }) {
+function UserReviews({ id, author, authorImage, movieTitle, movieImage, content, onUpdateReview, onDeleteReview, personalRating}) {
     const [canEditReview, setCanEditReview] = useState(false)
     const [canDeleteReview, setCanDeleteReview] = useState(false)
     const [updatedContent, setUpdatedContent] = useState('')
@@ -59,6 +59,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             <h2>{movieTitle}</h2>
             <img style={{height: "50px"}} src={movieImage} alt={movieTitle}></img>
             <h4>{content}</h4>
+            <h4>Your rating: {personalRating}</h4>
             <button onClick={toggleEditReview}>{canEditReview ? "Nevermind" : "Edit Review"}</button>
             {canEditReview ?
             <div>
