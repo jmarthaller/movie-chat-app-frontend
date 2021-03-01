@@ -27,7 +27,7 @@ function NewMovieForm() {
             <input type="text" id="title" value={newMovieTitle} onChange={(e) => setNewMovieTitle(e.target.value)} />
 
             <label htmlFor="genre">Genre</label>
-            <select id="genre" value={setNewMovieGenre} onChange={(e) => setNewMovieGenre(e.target.value)}>
+            <select id="genre" value={newMovieGenre} onChange={(e) => setNewMovieGenre(e.target.value)}>
                 <option value="drama">Drama</option>
                 <option value="action">Action</option>
                 <option value="comedy">Comedy</option>

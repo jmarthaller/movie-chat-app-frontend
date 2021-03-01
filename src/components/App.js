@@ -18,7 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [search, setSearch] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
-  const [selectedRuntime, setSelectedRuntime] = useState(null)
+
 
 
 
@@ -58,9 +58,7 @@ function App() {
     setSelectedGenre(e.target.value)
   }
 
-  function handleRuntimeChange(e) {
-    setSelectedRuntime(e.target.value)
-  }
+  
 
   useEffect(() => {
     fetch('http://localhost:3001/movies')
@@ -75,19 +73,17 @@ function App() {
   }, [])
 
 
-  const updatedMovies = moviesState.filter((movie) => {
+  const updatedMoviesForGenre = moviesState.filter((movie) => {
     return movie.title.toLowerCase().includes(search.toLowerCase())
   })
-
-
-  
-  
 
   // if (selectedRuntime) {
   //   moviesState.filter((movie) => {
   //     return movie.runtime
   //   })
   // }
+
+
 
  
 
@@ -107,8 +103,8 @@ function App() {
           <>
             <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
             <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
-            <RuntimeFilter handleRuntimeChange={handleRuntimeChange} />
-            <MoviesContainer updatedMovies={updatedMovies} selectedGenre={selectedGenre}  />
+            <RuntimeFilter  />
+            <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre}  />
           </>
           )
           :
