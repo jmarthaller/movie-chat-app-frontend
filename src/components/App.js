@@ -18,13 +18,17 @@ function App() {
   const [search, setSearch] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
   const [selectedRuntime, setSelectedRuntime] = useState(null)
-  const [accountUpdated, setAccountUpdated] = useState(false)
 
 
-  function onUpdateUserInfo() {
-    console.log(accountUpdated)
-    setAccountUpdated(!accountUpdated)
-    console.log(accountUpdated)
+
+  function onUpdateUserInfo(data) {
+    const updatedCurrentUser = {
+      id: data.id,
+      username: data.username,
+      avatar: data.avatar,
+      reviews: data.reviews
+    }
+    setCurrentUser(updatedCurrentUser)
   }
 
 

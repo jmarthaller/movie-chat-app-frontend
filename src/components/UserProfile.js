@@ -100,9 +100,9 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
       })
       .then((response) => response.json())
       .then((data) => {
-        // setAccountUpdated(!accountUpdated)
-        onUpdateUserInfo()
-        // console.log(accountUpdated)
+
+        onUpdateUserInfo(data)
+
         history.push("/profile");
       })
       setAvatar("")
