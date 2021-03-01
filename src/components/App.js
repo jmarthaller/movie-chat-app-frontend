@@ -20,10 +20,21 @@ function App() {
   const [selectedRuntime, setSelectedRuntime] = useState(null)
 
 
-// function to add review when form complete. also uncomment line with reviews in state
-//   function onAddReview(newReview) {
-//     setReviews([...reviews, newReview])
-// }
+  function onAddReview(newReview) {
+    setReviews([...reviews, newReview])
+  }
+
+  function onUpdateReview(data) {
+    const updatedReviews = reviews.map((review) => {
+      if (review.id === data.id) {
+        return { ...review, data }
+      } else {
+        return review
+      }
+    })
+    setReviews(updatedReviews)
+  }
+
 
   function handleGenreChange(e) {
     setSelectedGenre(e.target.value)
@@ -44,7 +55,6 @@ function App() {
     .then(response => response.json())
     .then(data => setReviews(data));
   }, [])
-
 
 
   const updatedMovies = moviesState.filter((movie) => {
@@ -89,7 +99,7 @@ function App() {
           </Route>
           <Route path='/profile'>
             {currentUser ? (
-              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} />
+              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview}  />
             )
             :
             <h1>Please Login or Signup</h1>
@@ -97,7 +107,7 @@ function App() {
           </Route>
           <Route path='/movies/:id'>
             {currentUser ? (
-              <MoviePage currentUser={currentUser} reviews={reviews} setReviews={setReviews} />
+              <MoviePage currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} />
             )
             :
             <h1>Please Login or Signup</h1>

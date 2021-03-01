@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 
-function UserReviews({ id, author, authorImage, movieTitle, movieImage, content }) {
+
+function UserReviews({ id, author, authorImage, movieTitle, movieImage, content, onUpdateReview }) {
     const [canEditReview, setCanEditReview] = useState(false)
     const [canDeleteReview, setCanDeleteReview] = useState(false)
     const [updatedContent, setUpdatedContent] = useState('')
 
 
-    const history = useHistory()
+
 
 
     function toggleEditReview() {
@@ -29,7 +29,6 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content 
         const formData = {
             content: updatedContent
         }
-        console.log(id)
       fetch(`http://localhost:3001/reviews/${id}`, {
       method: "PATCH", 
       headers: {
@@ -39,8 +38,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content 
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
-        history.push("/profile");
+        onUpdateReview(data)
       })
     }
 

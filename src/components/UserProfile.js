@@ -6,13 +6,21 @@ import { useHistory } from 'react-router-dom';
 
 
 
-function UserProfile({ currentUser, setCurrentUser, reviews }) {
+function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdateReview }) {
     const [canEditAccount, setCanEditAccount] = useState(false)
     const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [avatar, setAvatar] = useState('')
     const [accountUpdated, setAccountUpdated] = useState(false)
+    // const [reviewsStateWithNew, setReviewsStateWithNew] = useState([])
+
+
+    // useEffect(() => {
+    //     fetch('http://localhost:3001/reviews')
+    //     .then(response => response.json())
+    //     .then(data => setReviewsStateWithNew(data));
+    //   }, [])
 
     const  history = useHistory()
 
@@ -24,7 +32,30 @@ function UserProfile({ currentUser, setCurrentUser, reviews }) {
         setCanDeleteAccount(!canDeleteAccount)
     }
 
-    const allReviews = currentUser.reviews.map((review) => {
+    // if (reviewsStateWithNew.length !== 0) {
+
+    // const reviewsForCurrentUser = reviewsStateWithNew.map((review) => {
+    //     return review.author.id === currentUser.id
+    // })
+
+    // set reviewsState with currentUser
+    // const reviewsForCurrentUser = reviewsStateWithNew.map((review) => {
+    //     const result = []
+    //     if (review.user_id === currentUser.id) {
+    //         result.push(review)
+    //     } else {
+
+    //     }
+    //     return result 
+    // })
+
+    const reviewsByCurrentUser = reviews.filter((review) => {
+        return review.user_id === currentUser.id
+    })
+
+
+
+    const allReviews = reviewsByCurrentUser.map((review) => {
         return <UserReviews 
         key={review.id}
         id={review.id}
@@ -33,6 +64,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews }) {
         movieTitle={review.movie_title}
         movieImage={review.movie_image}
         content={review.content}
+        onUpdateReview={onUpdateReview}
         />
     })
 
@@ -59,15 +91,14 @@ function UserProfile({ currentUser, setCurrentUser, reviews }) {
         }
 
         fetch(`http://localhost:3001/users/${currentUser.id}`, {
-      method: "PATCH", 
-      headers: {
+        method: "PATCH", 
+        headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    })
+      })
       .then((response) => response.json())
       .then((data) => {
-        // console.log("Success:", data);
         setAccountUpdated(!accountUpdated)
         history.push("/profile");
       })
@@ -83,6 +114,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews }) {
         setCurrentUser(null)
         history.push("/");
     }
+ 
 
 
     return (
@@ -123,7 +155,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews }) {
             <h1>Your Reviews</h1>
             {allReviews}
         </div>
-    );
+    );  
 }
 
 export default UserProfile;

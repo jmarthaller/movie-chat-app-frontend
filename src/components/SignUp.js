@@ -17,7 +17,6 @@ function SignUp({ setCurrentUser }) {
       avatar
     }
 
-    // console.log(signupFormData)
 
     fetch('http://localhost:3001/signup', {
         method: 'POST', 
@@ -29,7 +28,6 @@ function SignUp({ setCurrentUser }) {
     .then((r)=>r.json())
     .then((user) => {
         setCurrentUser(user);
-        console.log(user)
         history.push('/');
     })
 }    
