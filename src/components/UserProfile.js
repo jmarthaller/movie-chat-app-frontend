@@ -6,13 +6,13 @@ import { useHistory } from 'react-router-dom';
 
 
 
-function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdateReview }) {
+function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdateReview, onDeleteReview, onUpdateUserInfo }) {
     const [canEditAccount, setCanEditAccount] = useState(false)
     const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [avatar, setAvatar] = useState('')
-    const [accountUpdated, setAccountUpdated] = useState(false)
+    // const [accountUpdated, setAccountUpdated] = useState(false)
     // const [reviewsStateWithNew, setReviewsStateWithNew] = useState([])
 
 
@@ -65,6 +65,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         movieImage={review.movie_image}
         content={review.content}
         onUpdateReview={onUpdateReview}
+        onDeleteReview={onDeleteReview}
         />
     })
 
@@ -99,9 +100,14 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
       })
       .then((response) => response.json())
       .then((data) => {
-        setAccountUpdated(!accountUpdated)
+        // setAccountUpdated(!accountUpdated)
+        onUpdateUserInfo()
+        // console.log(accountUpdated)
         history.push("/profile");
       })
+      setAvatar("")
+      setUsername("")
+      setPassword("")
     }
 
     function handleDeleteAccount() {

@@ -18,21 +18,34 @@ function App() {
   const [search, setSearch] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
   const [selectedRuntime, setSelectedRuntime] = useState(null)
+  const [accountUpdated, setAccountUpdated] = useState(false)
+
+
+  function onUpdateUserInfo() {
+    console.log(accountUpdated)
+    setAccountUpdated(!accountUpdated)
+    console.log(accountUpdated)
+  }
 
 
   function onAddReview(newReview) {
     setReviews([...reviews, newReview])
   }
 
-  function onUpdateReview(data) {
+  function onUpdateReview(data, formData) {
     const updatedReviews = reviews.map((review) => {
       if (review.id === data.id) {
-        return { ...review, data }
+        return { ...review, content: formData.content }
       } else {
         return review
       }
     })
     setReviews(updatedReviews)
+  }
+
+  function onDeleteReview(id) {
+    const filteredReviews = reviews.filter(review => review.id !== id)
+    setReviews(filteredReviews)
   }
 
 
@@ -99,7 +112,7 @@ function App() {
           </Route>
           <Route path='/profile'>
             {currentUser ? (
-              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview}  />
+              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview} onUpdateUserInfo={onUpdateUserInfo}  />
             )
             :
             <h1>Please Login or Signup</h1>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 
-function UserReviews({ id, author, authorImage, movieTitle, movieImage, content, onUpdateReview }) {
+function UserReviews({ id, author, authorImage, movieTitle, movieImage, content, onUpdateReview, onDeleteReview }) {
     const [canEditReview, setCanEditReview] = useState(false)
     const [canDeleteReview, setCanDeleteReview] = useState(false)
     const [updatedContent, setUpdatedContent] = useState('')
@@ -38,8 +38,9 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
     })
       .then((response) => response.json())
       .then((data) => {
-        onUpdateReview(data)
+        onUpdateReview(data, formData)
       })
+      setUpdatedContent("")
     }
 
     function handleDeleteReview() {
@@ -49,6 +50,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
         "Content-Type": "application/json",
       },
     })
+      onDeleteReview(id)
     }
 
     
