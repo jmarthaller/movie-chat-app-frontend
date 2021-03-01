@@ -9,6 +9,7 @@ import Search from "./Search";
 import Login from './Login';
 import SignUp from './SignUp';
 import MoviePage from './MoviePage';
+import NewMovieForm from './NewMovieForm';
 
 
 function App() {
@@ -117,6 +118,14 @@ function App() {
           <Route path='/profile'>
             {currentUser ? (
               <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview} onUpdateUserInfo={onUpdateUserInfo}  />
+            )
+            :
+            <h1>Please Login or Signup</h1>
+          }
+          </Route>
+          <Route path='/movies/new'>
+            {currentUser ? (
+              <NewMovieForm  />
             )
             :
             <h1>Please Login or Signup</h1>
