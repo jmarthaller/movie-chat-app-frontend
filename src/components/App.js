@@ -81,7 +81,9 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:3001/friendships')
     .then(response => response.json())
-    .then(data => setFriendshipsState(data));
+    .then(data => {
+      setFriendshipsState(data)
+    });
   }, [])
 
 

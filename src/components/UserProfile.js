@@ -16,7 +16,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     // const [accountUpdated, setAccountUpdated] = useState(false)
     // const [reviewsStateWithNew, setReviewsStateWithNew] = useState([])
 
-    
+    // debugger
     // useEffect(() => {
     //     fetch('http://localhost:3001/reviews')
     //     .then(response => response.json())
@@ -61,8 +61,8 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         return <UserFriends
         key={relationship.id}
         id={relationship.id}
-        followeeName={relationship.followee_object.username}
-        followeeAvatar={relationship.followee_object.avatar}
+        followeeName={relationship.followee_username}
+        followeeAvatar={relationship.followee_avatar}
         />
     })
 

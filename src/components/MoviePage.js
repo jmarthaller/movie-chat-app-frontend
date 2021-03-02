@@ -56,8 +56,11 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
     function handleFollowOtherUser(userToFollow) {
         const newFollowerRelationship = {
             follower_id: currentUser.id,
-            followee_id: userToFollow.id
+            followee_id: userToFollow.id,
+            followee_username: userToFollow.username,
+            followee_avatar: userToFollow.avatar
         }
+
         fetch('http://localhost:3001/friendships', {
             method: 'POST', 
             headers: {
@@ -67,6 +70,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
         })
         .then((r) => r.json())
         .then(data => {
+            // console.log(data)
             onAddNewFollow(data)
             history.push("/profile");
         })
