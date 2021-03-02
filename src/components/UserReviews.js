@@ -41,6 +41,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
         onUpdateReview(data, formData)
       })
       setUpdatedContent("")
+      setCanEditReview()
     }
 
     function handleDeleteReview() {

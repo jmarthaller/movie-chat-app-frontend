@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UserReviews from './UserReviews';
+import UserFriends from './UserFriends'
 import { useHistory } from 'react-router-dom';
 
 
@@ -109,6 +110,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
       setAvatar("")
       setUsername("")
       setPassword("")
+      toggleEditProfile()
     }
 
     function handleDeleteAccount() {
@@ -159,6 +161,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
             :
             null
             }
+            <UserFriends />
             <h1>Your Reviews</h1>
             {allReviews}
         </div>

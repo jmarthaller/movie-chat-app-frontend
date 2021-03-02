@@ -53,9 +53,25 @@ function MoviePage({ currentUser, onAddReview, reviews }) {
         e.target.reset()
     }
 
-    function handleFollowOtherUser(data) {
-        console.log(data)
-        // console.log('hi')
+    function handleFollowOtherUser(userToFollow) {
+
+        const newFollowerRelationship = {
+            follower_id: currentUser.id,
+            followee_id: userToFollow.id
+        }
+        fetch('http://localhost:3001/friendships', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newFollowerRelationship)
+        })
+        .then((r) => r.json())
+        .then(data => {
+            console.log(data)
+            history.push("/profile");
+        })
+
     }
 
 

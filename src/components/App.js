@@ -21,7 +21,6 @@ function App() {
   const [selectedRuntime, setSelectedRuntime] = useState(null)
 
 
-
   function onUpdateUserInfo(data) {
     const updatedCurrentUser = {
       id: data.id,
