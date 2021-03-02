@@ -70,7 +70,6 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
         })
         .then((r) => r.json())
         .then(data => {
-            // console.log(data)
             onAddNewFollow(data)
             history.push("/profile");
         })

@@ -55,7 +55,6 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     })
 
 
-    // console.log(friendshipsState)
 
     const allUserFriends = friendshipsState.map((relationship) => {
         return <UserFriends
@@ -66,7 +65,6 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         />
     })
 
-    // console.log(allUserFriends)
 
 
 

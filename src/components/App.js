@@ -41,6 +41,10 @@ function App() {
     setFriendshipsState([...friendshipsState, newFollow])
   }
 
+  function onAddMovieToList(newMovieToAdd) {
+    setMoviesState([...moviesState, newMovieToAdd])
+  }
+
   function onUpdateReview(data, formData) {
     const updatedReviews = reviews.map((review) => {
       if (review.id === data.id) {
@@ -149,7 +153,7 @@ function App() {
           </Route>
           <Route path='/movies/new'>
             {currentUser ? (
-              <NewMovieForm  />
+              <NewMovieForm onAddMovieToList={onAddMovieToList} />
             )
             :
             <h1>Please Login or Signup</h1>
