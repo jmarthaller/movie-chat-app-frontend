@@ -2,7 +2,7 @@ import React from 'react';
 import MoviesTile from './MoviesTile';
 
 function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntime, updatedMoviesForTime }) {
-    console.log(selectedRuntime)
+    // console.log(selectedRuntime)
 
         const filteredByGenre = updatedMoviesForGenre.filter((movie) => {
             return movie.genre.includes(selectedGenre)
