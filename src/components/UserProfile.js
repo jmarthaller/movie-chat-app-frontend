@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdateReview, onDeleteReview, onUpdateUserInfo }) {
+function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdateReview, onDeleteReview, onUpdateUserInfo, friendshipsState }) {
     const [canEditAccount, setCanEditAccount] = useState(false)
     const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
@@ -16,7 +16,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     // const [accountUpdated, setAccountUpdated] = useState(false)
     // const [reviewsStateWithNew, setReviewsStateWithNew] = useState([])
 
-
+    
     // useEffect(() => {
     //     fetch('http://localhost:3001/reviews')
     //     .then(response => response.json())
@@ -53,6 +53,20 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     const reviewsByCurrentUser = reviews.filter((review) => {
         return review.user_id === currentUser.id
     })
+
+
+    // console.log(friendshipsState)
+
+    const allUserFriends = friendshipsState.map((relationship) => {
+        return <UserFriends
+        key={relationship.id}
+        id={relationship.id}
+        followeeName={relationship.followee_object.username}
+        followeeAvatar={relationship.followee_object.avatar}
+        />
+    })
+
+    // console.log(allUserFriends)
 
 
 
@@ -161,7 +175,8 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
             :
             null
             }
-            <UserFriends />
+            <h2>Following</h2>
+            {allUserFriends}
             <h1>Your Reviews</h1>
             {allReviews}
         </div>

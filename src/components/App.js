@@ -19,6 +19,7 @@ function App() {
   const [search, setSearch] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
   const [selectedRuntime, setSelectedRuntime] = useState(null)
+  const [friendshipsState, setFriendshipsState] = useState([])
 
 
   function onUpdateUserInfo(data) {
@@ -34,6 +35,10 @@ function App() {
 
   function onAddReview(newReview) {
     setReviews([...reviews, newReview])
+  }
+
+  function onAddNewFollow(newFollow) {
+    setFriendshipsState([...friendshipsState, newFollow])
   }
 
   function onUpdateReview(data, formData) {
@@ -71,6 +76,12 @@ function App() {
     fetch('http://localhost:3001/reviews')
     .then(response => response.json())
     .then(data => setReviews(data));
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:3001/friendships')
+    .then(response => response.json())
+    .then(data => setFriendshipsState(data));
   }, [])
 
 
@@ -128,7 +139,7 @@ function App() {
           </Route>
           <Route path='/profile'>
             {currentUser ? (
-              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview} onUpdateUserInfo={onUpdateUserInfo}  />
+              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview} onUpdateUserInfo={onUpdateUserInfo} friendshipsState={friendshipsState}  />
             )
             :
             <h1>Please Login or Signup</h1>
@@ -144,7 +155,7 @@ function App() {
           </Route>
           <Route path='/movies/:id'>
             {currentUser ? (
-              <MoviePage currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} />
+              <MoviePage currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} onAddNewFollow={onAddNewFollow} />
             )
             :
             <h1>Please Login or Signup</h1>

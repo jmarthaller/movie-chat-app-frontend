@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 
 
-function MoviePage({ currentUser, onAddReview, reviews }) {
+function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
     const [newContent, setNewContent] = useState("")
     const [movieToDisplay, setMovieToDisplay] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
@@ -54,7 +54,6 @@ function MoviePage({ currentUser, onAddReview, reviews }) {
     }
 
     function handleFollowOtherUser(userToFollow) {
-
         const newFollowerRelationship = {
             follower_id: currentUser.id,
             followee_id: userToFollow.id
@@ -68,7 +67,7 @@ function MoviePage({ currentUser, onAddReview, reviews }) {
         })
         .then((r) => r.json())
         .then(data => {
-            console.log(data)
+            onAddNewFollow(data)
             history.push("/profile");
         })
 
