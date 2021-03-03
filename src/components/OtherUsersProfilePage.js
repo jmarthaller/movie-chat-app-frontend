@@ -7,7 +7,6 @@ function OtherUsersProfilePage({ onDeleteFriendship }) {
 
     const { id } = useParams();
 
-   
 
     const  history = useHistory()
 
@@ -42,6 +41,7 @@ function OtherUsersProfilePage({ onDeleteFriendship }) {
                 <h3>Review For: {review.movie_title}</h3>
                 <img style={{height: "100px"}} src={review.movie_image} alt="author-logo" ></img>
                 <p>{review.content}</p>
+                <p> User Rating: {review.personal_rating}</p>
             </div>
         )
     })

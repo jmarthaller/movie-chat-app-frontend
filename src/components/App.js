@@ -49,7 +49,7 @@ function App() {
   function onUpdateReview(data, formData) {
     const updatedReviews = reviews.map((review) => {
       if (review.id === data.id) {
-        return { ...review, content: formData.content }
+        return { ...review, content: formData.content, personal_rating: formData.personal_rating }
       } else {
         return review
       }

@@ -4,12 +4,18 @@ import { useHistory, useParams } from "react-router-dom";
 
 function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
     const [newContent, setNewContent] = useState("")
+    const [newRating, setNewRating] = useState(null)
     const [movieToDisplay, setMovieToDisplay] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
 
     const { id } = useParams();
 
     const  history = useHistory()
+
+    function handleRatingChange(e) {
+        setNewRating(e.target.value)
+    }
+    
 
     useEffect(() => {
         fetch(`http://localhost:3001/movies/${id}`)
@@ -30,7 +36,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
         const newReview = {
             user_id: currentUser.id,
             movie_id: id,
-            personal_rating: 1,
+            personal_rating: parseInt(newRating),
             content: newContent,
             author: currentUser.username,
             authorImage: currentUser.avatar,
@@ -98,6 +104,14 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
             <h4>{tagline}</h4>
             <form onSubmit={handleSubmitReview}>
                 <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
+                <select onChange={handleRatingChange}>
+                    <option value=''>Give This Movie a Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                 <input type="submit" value="Submit" />
             </form>
             <h4>Other Reviews for {title}</h4>
