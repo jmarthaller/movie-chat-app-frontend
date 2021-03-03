@@ -63,6 +63,12 @@ function App() {
   }
 
 
+  function onDeleteFriendship(id) {
+    const filteredFriendships = friendshipsState.filter(relationship => relationship.id !== id)
+    setFriendshipsState(filteredFriendships)
+  }
+
+
   function handleGenreChange(e) {
     setSelectedGenre(e.target.value)
   }
@@ -170,7 +176,7 @@ function App() {
           </Route>
           <Route path='/users/:id'>
             {currentUser ? (
-              <OtherUsersProfilePage currentUser={currentUser}  />
+              <OtherUsersProfilePage onDeleteFriendship={onDeleteFriendship} />
             )
             :
             <h1>Please Login or Signup</h1>

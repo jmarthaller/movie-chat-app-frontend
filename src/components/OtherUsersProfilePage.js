@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 
-function OtherUsersProfilePage({ currentUser }) {
+function OtherUsersProfilePage({ onDeleteFriendship }) {
     const [userToDisplay, setUserToDisplay] = useState(null)
     const [isUserLoaded, setIsUserLoaded] = useState(false);
 
     const { id } = useParams();
 
+   
+
     const  history = useHistory()
 
     function handleUnfollowOtherUser() {
-        console.log('hi')
+        fetch(`http://localhost:3001/friendships/${userToDisplay.following_users[0].id}`, {
+        method: "DELETE", 
+        headers: {
+        "Content-Type": "application/json",
+      },
+    })
         history.push("/profile");
+        onDeleteFriendship(userToDisplay.following_users[0].id)
     }
     
     useEffect(() => {
@@ -41,7 +49,7 @@ function OtherUsersProfilePage({ currentUser }) {
     return (
         <div>
             <h1>{username}</h1>
-            <button onClick={handleUnfollowOtherUser} style={{background: '#00b020', boxShadow: "inset 0 1px 0 hsl(0deg 0% 100% / 30%)"}}>Following</button>
+            <button className='following-btn' onClick={handleUnfollowOtherUser} style={{background: '#00b020', boxShadow: "inset 0 1px 0 hsl(0deg 0% 100% / 30%)"}}>Following</button>
             <img className="friend-profile-pic" style={{height: "75px"}} src={avatar} alt="profile-logo"></img>
             <h2>{username}'s Reviews</h2>
             {allOtherUserReviews}
