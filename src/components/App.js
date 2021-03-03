@@ -143,7 +143,7 @@ function App() {
             <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
             <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
             <RuntimeFilter handleRuntimeChange={handleRuntimeChange} />
-            <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre} updatedMoviesForTime={updatedMoviesForTime} selectedRuntime={selectedRuntime}  />
+            <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre} updatedMoviesForTime={updatedMoviesForTime} selectedRuntime={selectedRuntime} search={search}  />
           </>
           )
           :
