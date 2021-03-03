@@ -61,6 +61,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         key={relationship.id}
         id={relationship.id}
         followeeName={relationship.followee_username}
+        followeeId={relationship.followee_id}
         followeeAvatar={relationship.followee_avatar}
         />
     })
@@ -152,7 +153,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
                 </label>
                 <label>
                 Change Password:
-                    <input type="text" name="password" value={password} onChange={handlePasswordChange} />
+                    <input type="password" name="password" value={password} onChange={handlePasswordChange} />
                 </label>
                 <label>
                 Change Avatar:
@@ -173,7 +174,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
             :
             null
             }
-            <h2>Following</h2>
+            {friendshipsState.length === 0 ? <h2> You're Not Following Anyone Yet! </h2> : <h2>Following</h2>}
             {allUserFriends}
             <h1>Your Reviews</h1>
             {allReviews}

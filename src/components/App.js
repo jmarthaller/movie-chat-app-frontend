@@ -10,6 +10,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import MoviePage from './MoviePage';
 import NewMovieForm from './NewMovieForm';
+import OtherUsersProfilePage from './OtherUsersProfilePage';
 
 
 function App() {
@@ -162,6 +163,14 @@ function App() {
           <Route path='/movies/:id'>
             {currentUser ? (
               <MoviePage currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} onAddNewFollow={onAddNewFollow} />
+            )
+            :
+            <h1>Please Login or Signup</h1>
+          }
+          </Route>
+          <Route path='/users/:id'>
+            {currentUser ? (
+              <OtherUsersProfilePage currentUser={currentUser}  />
             )
             :
             <h1>Please Login or Signup</h1>

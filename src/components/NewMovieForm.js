@@ -47,7 +47,7 @@ function NewMovieForm({ onAddMovieToList }) {
 
     return (    
         <div>
-            <h3>Here at Putrid Potatoes™️, we care about the movies YOU care about. If you don't see a movie you and your friends would like to review, please add it below!</h3>
+            <h3>At Putrid Potatoes™️, we care about the movies YOU care about. If you don't see a movie you and your friends would like to review, please add it below!</h3>
             <form onSubmit={handleSubmit}>
 
             <label htmlFor="title">Title</label>

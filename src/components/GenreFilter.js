@@ -14,6 +14,8 @@ function GenreFilter({  handleGenreChange, selectedGenre }) {
             <option value="Musical">Musical</option>
             <option value="Romance">Romance</option>
             <option value="Western">Western</option>
+            <option value="Animation">Animation</option>
+            <option value="Documentary">Documentary</option>
             <option value="Science Fiction">Science Fiction</option>
             <option value="Thriller">Thriller</option>
             <option value="Fantasy">Fantasy</option>
