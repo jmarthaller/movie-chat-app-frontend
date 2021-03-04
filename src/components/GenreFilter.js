@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function GenreFilter({  handleGenreChange, selectedGenre }) {
+function GenreFilter({  handleGenreChange }) {
     return (
         <div className="genre-filter">
             <select name="genre-filter" id="genre-filter" onChange={handleGenreChange}>

@@ -38,13 +38,16 @@ function App() {
     setReviews([...reviews, newReview])
   }
 
+
   function onAddNewFollow(newFollow) {
     setFriendshipsState([...friendshipsState, newFollow])
   }
 
+
   function onAddMovieToList(newMovieToAdd) {
     setMoviesState([...moviesState, newMovieToAdd])
   }
+
 
   function onUpdateReview(data, formData) {
     const updatedReviews = reviews.map((review) => {
@@ -56,6 +59,7 @@ function App() {
     })
     setReviews(updatedReviews)
   }
+
 
   function onDeleteReview(id) {
     const filteredReviews = reviews.filter(review => review.id !== id)
@@ -73,9 +77,11 @@ function App() {
     setSelectedGenre(e.target.value)
   }
 
+
   function handleRuntimeChange(e) {
     setSelectedRuntime(e.target.value)
   }
+
 
   useEffect(() => {
     fetch('http://localhost:3001/movies')
@@ -102,14 +108,7 @@ function App() {
     return movie.title.toLowerCase().includes(search.toLowerCase())
   })
 
-  // if (selectedRuntime) {
-  //   moviesState.filter((movie) => {
-  //     return movie.runtime
-  //   })
-  // }
 
-  // Q for Rianna OfficeHours: Is it bad to pass down moviesState to try to have this other filter
-  // How can I make these two filters work independently?
   const updatedMoviesForTime = moviesState.filter((movie) => {
     if (selectedRuntime === 'short') {
       return movie.runtime < 90 && movie.title.toLowerCase().includes(search.toLowerCase())
@@ -125,7 +124,6 @@ function App() {
   })
 
  
-
   return (
     <div className="App">
       <Router>

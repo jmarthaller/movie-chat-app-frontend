@@ -2,7 +2,7 @@ import React from 'react';
 import MoviesTile from './MoviesTile';
 
 function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntime, updatedMoviesForTime, search }) {
-    console.log(selectedRuntime)
+
         if (!selectedRuntime || selectedRuntime === 'beef') {
 
             const filteredByGenre = updatedMoviesForGenre.filter((movie) => {

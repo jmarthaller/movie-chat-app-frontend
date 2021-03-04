@@ -11,6 +11,7 @@ function NewMovieForm({ onAddMovieToList }) {
     const [newMovieTagline, setNewMovieTagline] = useState("")
     const [newMovieOverview, setNewMovieOverview] = useState("")
 
+
     const  history = useHistory()
 
 
@@ -40,7 +41,6 @@ function NewMovieForm({ onAddMovieToList }) {
             onAddMovieToList(data)
             history.push(`/movies/${data.id}`);
         })
-
         e.target.reset()
     }
 

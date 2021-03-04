@@ -12,6 +12,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
 
     const  history = useHistory()
 
+
     function handleRatingChange(e) {
         setNewRating(e.target.value)
     }
@@ -26,9 +27,12 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
           });
       }, [id]);
 
+
     if (!isLoaded) return <h2>Loading...</h2>;
 
-    const { title, image, genre, runtime, tagline, releaseYear } = movieToDisplay;
+
+    const { title, image, genre, runtime, tagline, releaseYear, overview } = movieToDisplay;
+
 
     function handleSubmitReview(e) {
         e.preventDefault();
@@ -59,6 +63,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
         e.target.reset()
     }
 
+
     function handleFollowOtherUser(userToFollow) {
         const newFollowerRelationship = {
             follower_id: currentUser.id,
@@ -79,7 +84,6 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
             onAddNewFollow(data)
             history.push("/profile");
         })
-
     }
 
 
@@ -94,6 +98,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
         )
     })
 
+    
     return (
         <div>
             <h1>{title}</h1>
@@ -102,6 +107,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
             <h3>{releaseYear}</h3>
             <h3>Runtime: {runtime} minutes</h3>
             <h4>{tagline}</h4>
+            <p>{overview}</p>
             <form onSubmit={handleSubmitReview}>
                 <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
                 <select onChange={handleRatingChange}>

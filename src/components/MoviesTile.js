@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function MoviesTile({ id, title, genre, runtime, tagline, rating, releaseYear, overview, image, reviews }) {
+function MoviesTile({ id, title, genre, runtime, tagline, releaseYear, image }) {
 
 
     return (

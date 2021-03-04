@@ -42,7 +42,6 @@ function NavBar({ currentUser, resetCurrentUser }) {
         </>
            )
          }
-          
         </div>
       );
 }

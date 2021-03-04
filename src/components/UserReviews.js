@@ -9,20 +9,20 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
     const [updatedRating, setUpdatedRating] = useState(null)
 
 
-
-
-
     function toggleEditReview() {
         setCanEditReview(!canEditReview)
     }
+
 
     function toggleDeleteReview() {
         setCanDeleteReview(!canDeleteReview)
     }
 
+
     function handleContentChange(event) {
         setUpdatedContent(event.target.value);
     }
+
 
     function handleUpdateRating(event) {
         setUpdatedRating(event.target.value)
@@ -31,33 +31,36 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
 
     function handleUpdateReview(e) {
         e.preventDefault()
+        
         const formData = {
             content: updatedContent,
             personal_rating: updatedRating
         }
-      fetch(`http://localhost:3001/reviews/${id}`, {
-      method: "PATCH", 
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({"content": formData.content, personal_rating: parseInt(formData.personal_rating)}),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        onUpdateReview(data, formData)
-      })
-      setUpdatedContent("")
-      setCanEditReview()
+
+        fetch(`http://localhost:3001/reviews/${id}`, {
+        method: "PATCH", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"content": formData.content, personal_rating: parseInt(formData.personal_rating)}),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          onUpdateReview(data, formData)
+        })
+        setUpdatedContent("")
+        setCanEditReview()
     }
+
 
     function handleDeleteReview() {
         fetch(`http://localhost:3001/reviews/${id}`, {
-      method: "DELETE", 
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      onDeleteReview(id)
+        method: "DELETE", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        onDeleteReview(id)
     }
 
     
@@ -101,7 +104,6 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
         </div>
     )
 }
-
 
 
 export default UserReviews;

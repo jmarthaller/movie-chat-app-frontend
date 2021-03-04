@@ -5,6 +5,7 @@ function SignUp({ setCurrentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState("");
+
   const history = useHistory();
 
 
@@ -16,7 +17,6 @@ function SignUp({ setCurrentUser }) {
       password,
       avatar
     }
-
 
     fetch('http://localhost:3001/signup', {
         method: 'POST', 

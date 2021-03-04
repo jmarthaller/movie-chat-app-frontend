@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function UserFriends({ id, followeeName, followeeAvatar, followeeId }) {
+function UserFriends({ followeeName, followeeAvatar, followeeId }) {
 
 
     return (

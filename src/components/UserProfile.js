@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UserReviews from './UserReviews';
 import UserFriends from './UserFriends'
 import { useHistory } from 'react-router-dom';
@@ -13,47 +12,24 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [avatar, setAvatar] = useState('')
-    // const [accountUpdated, setAccountUpdated] = useState(false)
-    // const [reviewsStateWithNew, setReviewsStateWithNew] = useState([])
 
-    // debugger
-    // useEffect(() => {
-    //     fetch('http://localhost:3001/reviews')
-    //     .then(response => response.json())
-    //     .then(data => setReviewsStateWithNew(data));
-    //   }, [])
 
     const  history = useHistory()
+
 
     function toggleEditProfile() {
         setCanEditAccount(!canEditAccount)
     }
 
+
     function toggleDeleteProfile() {
         setCanDeleteAccount(!canDeleteAccount)
     }
 
-    // if (reviewsStateWithNew.length !== 0) {
-
-    // const reviewsForCurrentUser = reviewsStateWithNew.map((review) => {
-    //     return review.author.id === currentUser.id
-    // })
-
-    // set reviewsState with currentUser
-    // const reviewsForCurrentUser = reviewsStateWithNew.map((review) => {
-    //     const result = []
-    //     if (review.user_id === currentUser.id) {
-    //         result.push(review)
-    //     } else {
-
-    //     }
-    //     return result 
-    // })
 
     const reviewsByCurrentUser = reviews.filter((review) => {
         return review.user_id === currentUser.id
     })
-
 
 
     const allUserFriends = friendshipsState.map((relationship) => {
@@ -65,8 +41,6 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         followeeAvatar={relationship.followee_avatar}
         />
     })
-
-
 
 
     const allReviews = reviewsByCurrentUser.map((review) => {
@@ -89,13 +63,16 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         setUsername(event.target.value);
     }
     
+
     function handlePasswordChange(event) {
         setPassword(event.target.value);
     }
 
+
     function handleAvatarChange(event) {
         setAvatar(event.target.value);
     }
+
 
     function handleUpdateAccount(e) {
         e.preventDefault()
@@ -110,15 +87,13 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         method: "PATCH", 
         headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-
-        onUpdateUserInfo(data)
-
-        history.push("/profile");
+        },
+        body: JSON.stringify(formData),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            onUpdateUserInfo(data)
+            history.push("/profile");
       })
       setAvatar("")
       setUsername("")
@@ -126,13 +101,14 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
       toggleEditProfile()
     }
 
+
     function handleDeleteAccount() {
         fetch(`http://localhost:3001/users/${currentUser.id}`, {
         method: "DELETE", 
         headers: {
         "Content-Type": "application/json",
-      },
-    })
+        },
+        })
         setCurrentUser(null)
         history.push("/");
     }

@@ -7,7 +7,6 @@ function OtherUsersProfilePage({ onDeleteFriendship }) {
 
     const { id } = useParams();
 
-
     const  history = useHistory()
 
     function handleUnfollowOtherUser() {
