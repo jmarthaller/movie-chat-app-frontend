@@ -64,6 +64,8 @@ function NewMovieForm({ onAddMovieToList }) {
                 <option value="musical">Musical</option>
                 <option value="romance">Romance</option>
                 <option value="western">Western</option>
+                <option value="documentary">Documentary</option>
+                <option value="Animation">Animation</option>
                 <option value="sciene-fiction">Sciene-Fiction</option>
                 <option value="thriller">Thriller</option>
                 <option value="fantasy">Fantasy</option>
