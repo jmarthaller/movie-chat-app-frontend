@@ -123,6 +123,18 @@ function App() {
     }
   })
 
+  // function onUpdateLikes(likedReview) {
+  //   console.log(likedReview)
+  //   const updatedReviewForLikes = reviews.map((review) => {
+  //     if (review.id === likedReview.id) {
+  //       return { ...review, likes: likedReview.likes }
+  //     } else {
+  //       return review
+  //     }
+  //   })
+  //   setReviews(updatedReviewForLikes)
+  // }
+
  
   return (
     <div className="App">
@@ -166,7 +178,7 @@ function App() {
           </Route>
           <Route path='/movies/:id'>
             {currentUser ? (
-              <MoviePage currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} onAddNewFollow={onAddNewFollow} />
+              <MoviePage setReviews={setReviews} currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} onAddNewFollow={onAddNewFollow} />
             )
             :
             <h1>Please Login or Signup</h1>

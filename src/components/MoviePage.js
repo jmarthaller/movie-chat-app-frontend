@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 
 
-function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
+function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setReviews }) {
     const [newContent, setNewContent] = useState("")
     const [newRating, setNewRating] = useState(null)
     const [movieToDisplay, setMovieToDisplay] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
-    // const [movieLikes, setMovieLikes] = useState(null)
+    const [movieReviews, setMovieReviews] = useState(null)
+    // const [test, setTest] = useState(false)
 
     const { id } = useParams();
 
@@ -20,12 +21,9 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
 
 
     function handleLike(reviewObj){
-        let likesToUpdate = reviewObj.likes
-
         const updateObj = {
-            likes: likesToUpdate + 1
+            likes: reviewObj.likes + 1
         };
-      
           fetch(`http://localhost:3001/reviews/${reviewObj.id}`, {
             method: "PATCH",
             headers: {
@@ -35,16 +33,30 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
           })
             .then((r) => r.json())
             .then(data => {
+                // setTest(true)
+                // MoviePage.forceUpdate()
+                // setMovieReviews(movieToDisplay.reviews)
                 console.log(data)
+                // const updatedReviewLikes = movieReviews.map((review) => {
+                //     if (review.id === data.id) {
+                //       return { ...review, likes: data.likes }
+                //     } else {
+                //       return review
+                //     }
+                //   })
+                //   setReviews(updatedReviewLikes)
             });
     }
     
+
+
 
     useEffect(() => {
         fetch(`http://localhost:3001/movies/${id}`)
           .then((r) => r.json())
           .then((movie) => {
             setMovieToDisplay(movie);
+            setMovieReviews(movie.reviews)
             setIsLoaded(true);
           });
       }, [id]);
@@ -67,7 +79,8 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
             author: currentUser.username,
             authorImage: currentUser.avatar,
             movieTitle: title,
-            movieImage: image
+            movieImage: image,
+            likes: 0
         }
 
         fetch('http://localhost:3001/reviews', {
@@ -109,7 +122,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
     }
 
     
-    const allReviews = movieToDisplay.reviews.map((review) => {
+    const allReviews = movieReviews.map((review) => {
         return (
             <div style={{border: "1px solid black"}} key={review.id} className="movie-reviews">
                 <h3>Review By: {review.author}</h3>
