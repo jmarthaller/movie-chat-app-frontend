@@ -7,6 +7,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
     const [newRating, setNewRating] = useState(null)
     const [movieToDisplay, setMovieToDisplay] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
+    // const [movieLikes, setMovieLikes] = useState(null)
 
     const { id } = useParams();
 
@@ -15,6 +16,27 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
 
     function handleRatingChange(e) {
         setNewRating(e.target.value)
+    }
+
+
+    function handleLike(reviewObj){
+        let likesToUpdate = reviewObj.likes
+
+        const updateObj = {
+            likes: likesToUpdate + 1
+        };
+      
+          fetch(`http://localhost:3001/reviews/${reviewObj.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updateObj),
+          })
+            .then((r) => r.json())
+            .then(data => {
+                console.log(data)
+            });
     }
     
 
@@ -86,7 +108,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
         })
     }
 
-
+    
     const allReviews = movieToDisplay.reviews.map((review) => {
         return (
             <div style={{border: "1px solid black"}} key={review.id} className="movie-reviews">
@@ -94,9 +116,12 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
                 <p>{review.content}</p>
                 <img style={{height: "25px"}} src={review.author_image} alt="author-logo" ></img>
                 <button onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>
+                <button onClick={(e) => handleLike(review)} className="like-button">❤️ Like Review</button>
+                <p>{review.likes} likes</p>
             </div>
         )
     })
+
 
     
     return (
