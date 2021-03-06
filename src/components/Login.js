@@ -30,24 +30,26 @@ function Login({ setCurrentUser }) {
  
   
     return (
-        <div className="login">
-          <form  onSubmit={handleSubmit} autoComplete="off">
-            <h1>Login</h1>
-            <label>Username</label>
+        <div >
+          <form className="login" onSubmit={handleSubmit} autoComplete="off">
+
             <input
               type="text"
               name="username"
               value={formData.username}
               onChange={handleChange}
+              placeholder="Username"
             />
-            <label>Password</label>
+            <br></br>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
+              placeholder="Password"
             />
-            <input className="login-btn" type="submit" value="LOGIN" />
+            <br></br>
+            <input className="login-btn" type="submit" value="Login" />
           </form>
         </div>
       );

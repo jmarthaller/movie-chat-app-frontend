@@ -127,7 +127,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
     
     return (
-        <div>
+        <div className="movie-show-page">
             <h1>{title}</h1>
             <img style={{height: "400px"}} src={image} alt={id}></img>
             <h3>{genre}</h3>

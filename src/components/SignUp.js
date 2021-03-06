@@ -36,32 +36,37 @@ function SignUp({ setCurrentUser }) {
 
   return (
     <div>
-    <h1>Signup</h1>
-    <form  autoComplete="off" className="login" onSubmit={handleSubmit}>
-      <label>Username</label>
+
+    <form  autoComplete="off" className="signup" onSubmit={handleSubmit}>
+
       <input
         type="text"
         name="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        placeholder="Username"
       />
 
-      <label>Password</label>
+    <br></br>
+      <input
+        type="text"
+        name="avatar"
+        value={avatar}
+        onChange={(e) => setAvatar(e.target.value)}
+        placeholder="Avatar"
+      />
+ <br></br>
       <input
         type="password"
         name="password"
         autoComplete="current-password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
       />
 
-      <label>Avatar Image</label>
-      <input
-        type="text"
-        name="avatar"
-        value={avatar}
-        onChange={(e) => setAvatar(e.target.value)}
-      />
+<br></br>
+      
 
       <input className="signup-btn" type="submit" value="SIGNUP" />
       </form>
