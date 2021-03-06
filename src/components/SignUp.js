@@ -63,7 +63,7 @@ function SignUp({ setCurrentUser }) {
         onChange={(e) => setAvatar(e.target.value)}
       />
 
-      <input className="signup-btn" type="submit" value="Signup" />
+      <input className="signup-btn" type="submit" value="SIGNUP" />
       </form>
     </div>
   );
