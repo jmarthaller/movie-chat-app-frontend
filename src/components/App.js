@@ -137,7 +137,7 @@ function App() {
 
  
   return (
-    <div className="App">
+    <div className="app">
       <Router>
         <Header currentUser={currentUser} resetCurrentUser={setCurrentUser} />
         <Switch>

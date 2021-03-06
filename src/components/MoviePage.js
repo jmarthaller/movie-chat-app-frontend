@@ -33,18 +33,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
           })
             .then((r) => r.json())
             .then(data => {
-                // setTest(true)
-                // MoviePage.forceUpdate()
-                // setMovieReviews(movieToDisplay.reviews)
                 console.log(data)
-                // const updatedReviewLikes = movieReviews.map((review) => {
-                //     if (review.id === data.id) {
-                //       return { ...review, likes: data.likes }
-                //     } else {
-                //       return review
-                //     }
-                //   })
-                //   setReviews(updatedReviewLikes)
             });
     }
     

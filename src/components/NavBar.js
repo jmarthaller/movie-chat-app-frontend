@@ -14,8 +14,8 @@ function NavBar({ currentUser, resetCurrentUser }) {
 
     return (
         <div>
-          <img style={{height: "100px"}} src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Potat2.png" alt="pp logo"></img>
-          <h1>Putrid Potatoes</h1>
+          <img className="app-mascot" src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Potat2.png" alt="pp-logo"></img>
+          <h1 className="app-name">Putrid Potatoes</h1>
           
 
           <NavLink to="/" className="nav-link">
