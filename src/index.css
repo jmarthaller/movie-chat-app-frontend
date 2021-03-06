@@ -341,3 +341,29 @@ from Polenta app
   width: auto;
   float: left;
 }
+
+
+.search {
+  border-radius: 5px;
+  height: 25px;
+  width: 33%;
+  padding: 4px 23px 4px 30px;
+  margin: 20px;
+  outline: 0;
+  color: #f5f5f5;
+}
+
+.search input {
+  border-radius: 5px;
+  height: 25px;
+  width: 75%;
+  padding: 2px 2px 4px 5px;
+  margin: 2px;
+  background-color: #f5f5f5;
+}
+
+
+#genre-filter {
+  /* float: right; */
+
+}
