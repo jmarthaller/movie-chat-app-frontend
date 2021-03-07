@@ -159,7 +159,6 @@ function App() {
           :
           <div className="login-or-signup-prompt">
             <img className="logsignp" src="https://media1.giphy.com/media/l0ErRtQDgjMtQcjsI/200.gif" alt="=giffie" /> 
-            {/* https://media1.giphy.com/media/l0ErRtQDgjMtQcjsI/200.gif              backupimage */}
             <h3>Write Movie Reviews and Share Them with Friends</h3>
             <h3>Please Login or Signup</h3>
           </div>

@@ -58,7 +58,7 @@ function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntim
             genre={movie.genre}
             tagline={movie.tagline}
             rating={movie.rating}
-            releaseYear={movie.release_year}
+            release_year={movie.release_year}
             overview={movie.overview}
             reviews={movie.reviews}
             />
