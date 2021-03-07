@@ -8,7 +8,13 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
     const [movieToDisplay, setMovieToDisplay] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
     const [movieReviews, setMovieReviews] = useState(null)
+    const [canLeaveReview, setCanLeaveReview] = useState(false)
     // const [test, setTest] = useState(false)
+
+    function handleCanLeaveReview() {
+        setCanLeaveReview(!canLeaveReview)
+        console.log(canLeaveReview)
+    }
 
     const { id } = useParams();
 
@@ -127,27 +133,56 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
     
     return (
         <div className="movie-show-page">
-            <img className="movie-show-image" src={image} alt={id}></img>
+            
             <div className="movie-show-details">
+                <img className="movie-show-image" src={image} alt={id}></img>
                 <h1 className="movie-show-title">{title}</h1>
                 <h4 className="movie-show-year">{release_year}</h4>
                 <h3 className="movie-show-genre">{genre}</h3>
-                <h3>Runtime: {runtime} minutes</h3>
-                <h4>{tagline}</h4>
-                <p>{overview}</p>
+                <h3 className="movie-show-runtime">Runtime: {runtime} minutes</h3>
+                <p className="movie-show-overview">{overview}</p>
+                <h4 className="movie-show-tagline">{tagline}</h4>
             </div>
-            <form className="new-review-form" onSubmit={handleSubmitReview}>
-                <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
-                <select onChange={handleRatingChange}>
-                    <option value=''>Give This Movie a Rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <input type="submit" value="Submit" />
-            </form>
+            <button onClick={handleCanLeaveReview} id="myBtn">Leave Review</button>
+            {canLeaveReview ?
+            <div className="modal-content">
+                <div className="modal-header">
+                    <span className="close" onClick={handleCanLeaveReview}>&times;</span>
+                    <h2>Leave A Review Here</h2>
+                </div>    
+                <div className="modal-body">
+                        <form className="new-review-form" onSubmit={handleSubmitReview}>
+                            <textarea className="review-text" name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
+                            <select className="review-star-rating" onChange={handleRatingChange}>
+                                <option value=''>RATING</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <input type="submit" className="submit-review-btn" value="Submit" />
+                        </form>
+                </div>
+            </div>
+            :
+            <div></div>
+            }
+
+            {/* <div className="review-form">
+                <form className="new-review-form" onSubmit={handleSubmitReview}>
+                    <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
+                    <select onChange={handleRatingChange}>
+                        <option value=''>Give This Movie a Rating</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <input type="submit" value="Submit" />
+                </form>
+            </div> */}
             <h4>Other Reviews for {title}</h4>
               {allReviews}  
         </div>

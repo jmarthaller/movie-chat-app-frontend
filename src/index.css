@@ -100,7 +100,7 @@ from Polenta app
 }
 
 .logout:hover {
-  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2);
   background: #00a72a;
 }
 
@@ -383,41 +383,46 @@ from Polenta app
   margin-top: -50px; 
 }
 
-.movie-show-image{
+.movie-show-details {
+  height: 570px;
+}
+
+.movie-show-details img {
   margin: 25px;
   border-radius: 12px;
   width: auto;
   height: 400px;
   border: 0.5px solid white;
-  box-shadow: 0 0 10px 3px rgba(47, 80, 104, 0.91) ;
-}
-
-.movie-show-details {
-  margin-top: -400px;
+  box-shadow: 0 0 10px 3px rgba(47, 80, 104, 0.91);
 }
 
 
 .movie-show-title {
   font: normal normal bold 77px/1 Georgia, serif;
-  text-align: center;
+  position: relative;
+  left: 25%;
+  top: -400px;
+  /* text-align: center; */
   color: #3d82aa;
   font-size: 40px;
   font-weight: 900;
   letter-spacing: -2px;
   word-spacing: 3px;
-  text-shadow: 0.7px 0.7px rgb(255, 253, 253);
-  margin-top: 1%;
-  margin-left: -30%; 
+  text-shadow: 1px 1px rgb(255, 253, 253);
+  /* margin-top: 1%;
+  margin-left: -30%;  */
+  width: 60%;
 }
 
 
 .movie-show-year {
   color: #3d82aa;
+  position: relative;
   font: normal normal bold 77px/1 Georgia;
   font-size: 18px;
   font-weight: 500;
-  margin-top: -53px;
-  margin-left: 575px; 
+  left: 25%;
+  top: -400px;
 }
 
 
@@ -426,25 +431,159 @@ from Polenta app
   font: normal normal bold 77px/1 Georgia;
   font-size: 18px;
   font-weight: 500;
-  margin-top: 33px;
-  margin-left: 358px; 
+  position: relative;
+  left: 33%;
+  top: -442px;
+}
+
+.movie-show-runtime {
+  color: #3d82aa;
+  font: normal normal bold 77px/1 Georgia;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  left: 25%;
+  top: -430px;
+}
+
+.movie-show-overview {
+  color: #3d82aa;
+  font: normal normal bold 77px/1 Georgia;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  left: 25%;
+  top: -400px;
+  width: 60%;
+  word-spacing: 8px;
+}
+
+.movie-show-tagline {
+  color: #3d82aa;
+  font: Oxygen;
+  font-size: 20px;
+  font-weight: 900;
+  position: relative;
+  left: 1.5%;
+  top: -300px;
+  width: 60%;
+  word-spacing: 8px;
+}
+
+
+
+#myBtn {
+  width: 10%;
+  background: #00c030;
+  color: #fff;
+  margin-top: 5px;
+  margin-left: 20px;
+  padding: .3em 1.25em;
+  font-size: 1rem;
+  font-family: inherit;
+  vertical-align: baseline;
+  border-radius: 6px;
+  border-style: hidden;
 }
 
 
 
 
-/* .movie-show-page {
-  margin: 2px;
-} */
 
+/* Modal Header */
+.modal-header {
+  padding: 1px 16px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #3d82a9;
+  color: white;
+}
 
-/* .new-review-form {
-  position: fixed;
-} */
-
-
-
-/* 
-.movie-reviews {
+.close {
   float: right;
-} */
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 100px 16px;
+}
+
+
+/* Modal Content */
+.modal-content {
+  position: absolute;
+  background-color: #3d82a9;
+  margin-left: 200px;
+  margin-top: -400px;
+  padding: 0;
+  left: 40px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  width: 60%;
+  height: 60%;
+  box-shadow: 4 8px 16px 0 rgba(0,0,0,0.2),6 12px 40px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  box-shadow: 0 0 800px 200px rgba(73,73,73,0.91) ;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {right: -400px; opacity: 0}
+  to {right: 0; opacity: 1}
+}
+
+
+.review-text {
+  padding: 10px 10px;
+  line-height: 1.4;
+  margin: auto;
+  margin-top: -100px;
+  height: 20em;
+  align-content: center;
+  width: 90%;
+  border-radius: 5px;
+}
+
+.review-text:focus {
+  background-color: #ccdded;
+  outline: none;
+}
+
+.review-star-rating {
+  width: 21.5%;
+  font-size: 12px;
+  padding: 10px;
+  margin: 20px 0 15px 5px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+  cursor: row-resize;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+
+.submit-review-btn {
+  width: 10%;
+  background: #00c030;
+  color: #fff;
+  margin-top: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: .3em 1.10em;
+  font-size: 1rem;
+  float: right;
+  font-family: inherit;
+  vertical-align: baseline;
+  border-radius: 6px;
+  border-style: hidden;
+}
+
+.submit-review-btn:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
