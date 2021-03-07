@@ -353,7 +353,7 @@ from Polenta app
   border-radius: 0.45em;
   padding: 0.60em 0.5em;
   font-size: 0.85rem;
-  cursor: row-resize;
+  cursor: pointer;
   line-height: 1.1;
   background-color: #f5f5f5;
   font-family: sans-serif;
@@ -372,7 +372,7 @@ from Polenta app
   border-radius: 0.45em;
   padding: 0.60em 0.5em;
   font-size: 0.85rem;
-  cursor: row-resize;
+  cursor: pointer;
   line-height: 1.1;
   background-color: #f5f5f5;
   font-family: sans-serif;
@@ -381,15 +381,6 @@ from Polenta app
   float: right;
   margin-right: 40px; 
   margin-top: -50px; 
-}
-
-
-
-
-
-
-.movie-show-page {
-  float: left;
 }
 
 .movie-show-image{
@@ -401,22 +392,55 @@ from Polenta app
   box-shadow: 0 0 10px 3px rgba(47, 80, 104, 0.91) ;
 }
 
+.movie-show-details {
+  margin-top: -400px;
+}
+
 
 .movie-show-title {
   font: normal normal bold 77px/1 Georgia, serif;
   text-align: center;
   color: #3d82aa;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 900;
   letter-spacing: -2px;
   word-spacing: 3px;
   text-shadow: 0.7px 0.7px rgb(255, 253, 253);
-  /* margin-top: -400px;  */
+  margin-top: 1%;
+  margin-left: -30%; 
 }
 
-.movie-show-page {
-  margin: 2px;
+
+.movie-show-year {
+  color: #3d82aa;
+  font: normal normal bold 77px/1 Georgia;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: -53px;
+  margin-left: 575px; 
 }
+
+
+.movie-show-genre {
+  color: #3d82aa;
+  font: normal normal bold 77px/1 Georgia;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 33px;
+  margin-left: 358px; 
+}
+
+
+
+
+/* .movie-show-page {
+  margin: 2px;
+} */
+
+
+/* .new-review-form {
+  position: fixed;
+} */
 
 
 

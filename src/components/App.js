@@ -169,7 +169,11 @@ function App() {
               <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview} onUpdateUserInfo={onUpdateUserInfo} friendshipsState={friendshipsState}  />
             )
             :
-            <h1>Please Login or Signup</h1>
+            <div className="login-or-signup-prompt">
+            <img className="logsignp" src="https://media1.giphy.com/media/l0ErRtQDgjMtQcjsI/200.gif" alt="=giffie" /> 
+            <h3>Write Movie Reviews and Share Them with Friends</h3>
+            <h3>Please Login or Signup</h3>
+            </div>
           }
           </Route>
           <Route path='/movies/new'>
@@ -177,7 +181,11 @@ function App() {
               <NewMovieForm onAddMovieToList={onAddMovieToList} />
             )
             :
-            <h1>Please Login or Signup</h1>
+            <div className="login-or-signup-prompt">
+            <img className="logsignp" src="https://media1.giphy.com/media/l0ErRtQDgjMtQcjsI/200.gif" alt="=giffie" /> 
+            <h3>Write Movie Reviews and Share Them with Friends</h3>
+            <h3>Please Login or Signup</h3>
+          </div>
           }
           </Route>
           <Route path='/movies/:id'>
@@ -185,7 +193,11 @@ function App() {
               <MoviePage setReviews={setReviews} currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} onAddNewFollow={onAddNewFollow} />
             )
             :
-            <h1>Please Login or Signup</h1>
+            <div className="login-or-signup-prompt">
+            <img className="logsignp" src="https://media1.giphy.com/media/l0ErRtQDgjMtQcjsI/200.gif" alt="=giffie" /> 
+            <h3>Write Movie Reviews and Share Them with Friends</h3>
+            <h3>Please Login or Signup</h3>
+          </div>
           }
           </Route>
           <Route path='/users/:id'>
@@ -193,7 +205,11 @@ function App() {
               <OtherUsersProfilePage onDeleteFriendship={onDeleteFriendship} />
             )
             :
-            <h1>Please Login or Signup</h1>
+            <div className="login-or-signup-prompt">
+            <img className="logsignp" src="https://media1.giphy.com/media/l0ErRtQDgjMtQcjsI/200.gif" alt="=giffie" /> 
+            <h3>Write Movie Reviews and Share Them with Friends</h3>
+            <h3>Please Login or Signup</h3>
+          </div>
           }
           </Route>
         </Switch>

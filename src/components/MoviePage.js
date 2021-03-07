@@ -127,15 +127,16 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
     
     return (
         <div className="movie-show-page">
-            
             <img className="movie-show-image" src={image} alt={id}></img>
-            <h1 className="movie-show-title" >{title}</h1>
-            <h4>{release_year}</h4>
-            <h3>{genre}</h3>
-            <h3>Runtime: {runtime} minutes</h3>
-            <h4>{tagline}</h4>
-            <p>{overview}</p>
-            <form onSubmit={handleSubmitReview}>
+            <div className="movie-show-details">
+                <h1 className="movie-show-title">{title}</h1>
+                <h4 className="movie-show-year">{release_year}</h4>
+                <h3 className="movie-show-genre">{genre}</h3>
+                <h3>Runtime: {runtime} minutes</h3>
+                <h4>{tagline}</h4>
+                <p>{overview}</p>
+            </div>
+            <form className="new-review-form" onSubmit={handleSubmitReview}>
                 <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
                 <select onChange={handleRatingChange}>
                     <option value=''>Give This Movie a Rating</option>
