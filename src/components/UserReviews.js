@@ -65,7 +65,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
 
     
     return (
-        <div style={{border: "1px solid black"}} className="user-reviews">
+        <div style={{border: "1px dashed black"}} className="user-reviews">
             <h2>{movieTitle}</h2>
             <img style={{height: "50px"}} src={movieImage} alt={movieTitle}></img>
             <h4>{content}</h4>

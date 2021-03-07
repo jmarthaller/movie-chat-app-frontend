@@ -9,11 +9,11 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
     const [isLoaded, setIsLoaded] = useState(false);
     const [movieReviews, setMovieReviews] = useState(null)
     const [canLeaveReview, setCanLeaveReview] = useState(false)
-    // const [test, setTest] = useState(false)
+    // const [reviewToIncreaseLikes, setReviewToIncreaseLikes] = useState(null)
+
 
     function handleCanLeaveReview() {
         setCanLeaveReview(!canLeaveReview)
-        console.log(canLeaveReview)
     }
 
     const { id } = useParams();
@@ -168,22 +168,10 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             :
             <div></div>
             }
-
-            {/* <div className="review-form">
-                <form className="new-review-form" onSubmit={handleSubmitReview}>
-                    <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
-                    <select onChange={handleRatingChange}>
-                        <option value=''>Give This Movie a Rating</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <input type="submit" value="Submit" />
-                </form>
-            </div> */}
-            <h4>Other Reviews for {title}</h4>
+            <div> 
+                <h4 className="movie-show-review-header">POPULAR REVIEWS</h4>
+                <hr className="movie-show-review-header-hr" />
+            </div>
               {allReviews}  
         </div>
     )

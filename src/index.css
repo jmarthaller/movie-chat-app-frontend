@@ -47,6 +47,7 @@ code {
   margin-bottom: 10px; */
   color: #3d82aa;
   font-size: 53px;
+  opacity: 0;
   /* height: 100px; */
   width: 100%; /** Use 100% to fill the width of the page **/
   /* position: fixed; */
@@ -75,7 +76,7 @@ from Polenta app
   left: 0.5em;
   top: 0;
   height: 100px;
-  box-shadow: 7px 7px 7px rgb(214, 211, 211);
+  /* box-shadow: 7px 7px 7px rgb(214, 211, 211); */
   border-radius: 85px;
 }
 
@@ -115,6 +116,7 @@ from Polenta app
   box-shadow: 20px 20px 20px rgb(214, 211, 211);
   filter: brightness(160%);
 }
+
 
 .login-or-signup-prompt h3 {
   border-radius: 12%;
@@ -476,7 +478,7 @@ from Polenta app
   width: 10%;
   background: #00c030;
   color: #fff;
-  margin-top: 5px;
+  margin-top: -11px;
   margin-left: 20px;
   padding: .3em 1.25em;
   font-size: 1rem;
@@ -495,7 +497,7 @@ from Polenta app
   padding: 1px 16px;
   font-family: 'Courier New', Courier, monospace;
   background-color: #3d82a9;
-  color: white;
+  color: #ccdded;
 }
 
 .close {
@@ -559,7 +561,7 @@ from Polenta app
   margin: 20px 0 15px 5px;
   display: inline-block;
   border: none;
-  background: #f1f1f1;
+  background: #ccdded;
   border-radius: 10px;
   cursor: row-resize;
   font-family: sans-serif;
@@ -586,4 +588,34 @@ from Polenta app
 .submit-review-btn:hover {
   box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
   background: #00a72a;
+}
+
+
+.movie-show-review-header {
+  margin: auto;
+  color: #3d82aa;
+  margin: 30px 0 4px 20px;
+}
+
+.movie-show-review-header-hr {
+  border: 0;
+  height: 1px;
+  color: #3d82aa;
+  background-color: #3d82aa;
+  background-image: linear-gradient(to right, #ccc, #3d82aa, #ccc);
+}
+
+
+.movies-container-header {
+  margin: auto;
+  color: #3d82aa;
+  margin: 45px 0 4px 13px;
+}
+
+.movies-container-hr {
+  border: 0;
+  height: 1px;
+  color: #3d82aa;
+  background-color: #3d82aa;
+  background-image: linear-gradient(to right, #ccc, #3d82aa, #ccc);
 }

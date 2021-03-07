@@ -27,7 +27,8 @@ function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntim
 
         return (
             <div>
-                <h1>Popular Films This Week</h1>
+                <h4 className="movies-container-header">POPULAR FILMS THIS WEEK</h4>
+                <hr className="movies-container-hr" />
                 {allMoviesForGenre}
             </div>
         )
@@ -66,7 +67,8 @@ function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntim
 
         return (
             <div>
-                <h1>Popular Films This Week</h1>
+                <h4 className="movies-container-header">POPULAR FILMS THIS WEEK</h4>
+                <hr className="movies-container-hr" />
                 {allMoviesForRuntime}
             </div>
         )
