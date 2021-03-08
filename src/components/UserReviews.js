@@ -65,12 +65,14 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
 
     
     return (
-        <div style={{border: "1px dashed black"}} className="user-reviews">
+        <div className="user-reviews">
+            <hr className="profile-hr" />
+            <img src={movieImage} alt={movieTitle}></img>
+            <div className="movie-review-details">
             <h2>{movieTitle}</h2>
-            <img style={{height: "50px"}} src={movieImage} alt={movieTitle}></img>
             <h4>{content}</h4>
             <h4>Your rating: {personalRating}</h4>
-            <button onClick={toggleEditReview}>{canEditReview ? "Nevermind" : "Edit Review"}</button>
+            <button className="edit-review-button" onClick={toggleEditReview}>EDIT REVIEW</button>
             {canEditReview ?
             <div>
             <form onSubmit={handleUpdateReview}>
@@ -92,7 +94,8 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             :
             null
             }
-            <button onClick={toggleDeleteReview}>{canDeleteReview ? "I would Never!" : "Delete Review"}</button>
+            <br></br>
+            <button className="delete-review-button" onClick={toggleDeleteReview}>DELETE REVIEW</button>
             {canDeleteReview ?
             <div>
                 <h2>Are you SURE you want to delete your review?</h2>
@@ -101,6 +104,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             :
             null
             }
+            </div>
         </div>
     )
 }

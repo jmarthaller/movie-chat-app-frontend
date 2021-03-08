@@ -814,12 +814,11 @@ from Polenta app
 }
 
 .user-friends-header {
-  font-size: 12px;;
+  font-size: 12px;
   margin: auto;
   color: #3d82aa;
   margin: 45px 0 4px 13px;
 }
-
 
 .profile-hr {
   border: 0;
@@ -844,4 +843,77 @@ from Polenta app
   height: 50px;
   margin-left: 4px;
   margin-right: 4px;
+}
+
+.user-reviews-container {
+  margin-top: 50px;
+  /* margin-bottom: 50px; */
+}
+
+
+.user-reviews-header {
+  font-size: 20px;
+  /* margin: auto; */
+  color: #3d82aa;
+  margin: 45px 0 4px 9px;
+}
+
+.user-reviews img {
+  height: 200px;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.movie-review-details {
+  margin: -200px 1px 100px 200px;
+}
+
+.movie-review-details h2 {
+  font-size: 32px;
+  color: #fff;
+  text-shadow: 1px 1px #c2b092;
+}
+
+.movie-review-details h4 {
+  margin-top: -5px;
+  font-size: 15px;
+  color: #3d82a8;
+  text-shadow: 1px 1px #c2b092;
+}
+
+.edit-review-button {
+  background: #00c030;
+  color: #fff;
+  margin: 7px 0px 7px 0px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+
+.edit-review-button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+
+.delete-review-button {
+  background: #00c030;
+  color: #fff;
+  /* margin: -400px 100px 100px 145px; */
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+
+.delete-review-button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
 }

@@ -157,8 +157,10 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
                 <hr className="profile-hr" />
                 {allUserFriends}
             </div>
-            <h1>Your Reviews</h1>
-            {allReviews}
+            <div className="user-reviews-container">
+                <h2 className="user-reviews-header">Your Reviews</h2>
+                {allReviews}
+            </div>
         </div>
     );  
 }
