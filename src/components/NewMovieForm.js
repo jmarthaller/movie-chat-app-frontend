@@ -47,7 +47,7 @@ function NewMovieForm({ onAddMovieToList }) {
 
     return (    
         <div className='new-movie-form' >
-            <h3>At Putrid Potatoes™️, we care about the movies YOU care about. If you don't see a movie you would like to review, please add it below!</h3>
+            <h3>Don't See a Movie You Want to Review? Add it below!</h3>
             <form className='new-movie-form-input' onSubmit={handleSubmit}>
 
             {/* <label htmlFor="title">Title</label> */}
@@ -89,6 +89,7 @@ function NewMovieForm({ onAddMovieToList }) {
             <br></br>
             <input className="submit-new-movie-btn" type="submit" value="Submit New Movie" />
         </form>
+        <img className="add-movie-pic" src="https://media4.giphy.com/media/42wQXwITfQbDGKqUP7/200.gif" alt="=giffie"/>
     </div>
     )
 }

@@ -263,6 +263,13 @@ from Polenta app
     letter-spacing: 1px;
 }
 
+.add-movie-pic {
+  height: 500px;
+  border-radius: 12%;
+  box-shadow: 20px 20px 20px rgb(214, 211, 211);
+  margin: -600px 1px 65px 800px;
+}
+
 .new-movie-form-input input[type=text] {
   width: 20%;
   font-size: 15px;
@@ -488,7 +495,10 @@ from Polenta app
   border-style: hidden;
 }
 
-
+#myBtn:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
 
 
 
@@ -618,4 +628,187 @@ from Polenta app
   color: #3d82aa;
   background-color: #3d82aa;
   background-image: linear-gradient(to right, #ccc, #3d82aa, #ccc);
+}
+
+
+.profile-pic {
+  height: 105px;
+  border-radius: 50px;
+  margin: 20px 0 0 20px;
+  filter: brightness(120%);
+  border: 1px solid white;
+}
+
+.profile-username {
+  color: #fff;
+  margin: -100px 10px 40px 150px;
+  text-shadow: 1px 1px #c2b092;
+}
+
+.edit-account-button {
+  background: #00c030;
+  color: #fff;
+  margin: -400px 100px 100px 145px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+
+.edit-account-button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+
+
+
+
+/* Profile Modal Header */
+.profile-modal-header {
+  padding: 1px 16px;
+  margin-bottom: -50px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #3d82a9;
+  color: #ccdded;
+}
+
+.profile-close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Modal Body */
+.profile-modal-body {
+  padding: 100px 16px;
+}
+
+/* Modal Content */
+.profile-modal-content {
+  position: absolute;
+  background-color: #3d82a9;
+  margin-left: 240px;
+  margin-top: -150px;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 4px;
+  width: 60%;
+  height: 65%;
+  box-shadow: 4 8px 16px 0 rgba(0,0,0,0.2),6 12px 40px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  box-shadow: 0 0 800px 200px rgba(73,73,73,0.91) ;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {left: -400px; opacity: 0}
+  to {left: 0; opacity: 1}
+}
+
+.profile-modal-body input[type=text] {
+  width: 50%;
+  font-size: 15px;
+  padding: 10px;
+  margin: -35px 0 35px 20px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.profile-modal-body input[type=password] {
+  width: 50%;
+  font-size: 15px;
+  padding: 10px;
+  margin: -35px 0 35px 20px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.new-movie-form input:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+.edit-profile-submit {
+  background: #00c030;
+  color: #fff;
+  margin: -400px 100px 50px 25px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+
+.edit-profile-submit:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+
+
+.delete-profile-submit {
+  background: #00c030;
+  color: #fff;
+  margin: -400px 100px 20px 25px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+
+
+.delete-profile-submit:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+
+
+.confirm-delete h2 {
+  color: #c2b092;
+  font-size: 30px;
+  font-family: 'Courier', Courier, monospace;
+  font-weight: 650;
+  float: left;
+  text-decoration: none;
+  margin-top: -10px;
+  margin-right: 10px;
+  display: block;
+  padding: 2px 5px 5px 25px;
+  letter-spacing: -2px;
+  word-spacing: -2.5px;
+  text-shadow: 1px 1px rgb(255, 253, 253);
+  transition: background-position 275ms ease;
+}
+
+.confirm-delete button {
+  background: #00c030;
+  color: #fff;
+  margin: -400px 100px 20px 20px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+
+
+.confirm-delete button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
 }
