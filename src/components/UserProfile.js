@@ -43,6 +43,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     })
 
 
+
     const allReviews = reviewsByCurrentUser.map((review) => {
         return <UserReviews 
         key={review.id}
@@ -151,9 +152,11 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
             :
             null
             }
-
-            {friendshipsState.length === 0 ? <h2> You're Not Following Anyone Yet! </h2> : <h2>Following</h2>}
-            {allUserFriends}
+            <div className="user-friends-container">
+                {friendshipsState.length === 0 ? <h2 className="user-friends-header"> You're Not Following Anyone Yet! </h2> : <h2 className="user-friends-header">Following ({allUserFriends.length})</h2>}
+                <hr className="profile-hr" />
+                {allUserFriends}
+            </div>
             <h1>Your Reviews</h1>
             {allReviews}
         </div>

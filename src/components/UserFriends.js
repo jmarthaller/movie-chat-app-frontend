@@ -7,12 +7,9 @@ function UserFriends({ followeeName, followeeAvatar, followeeId }) {
 
 
     return (
-        <div style={{border: "1px solid black"}} className="user-friends">
-            
-            <h4>{followeeName}</h4>
-            
+        <div className="other-user-avatar">
             <Link to={`/users/${followeeId}`}>
-                <img style={{height: "50px"}} src={followeeAvatar} alt={followeeName}></img>
+                <img src={followeeAvatar} alt={followeeName}></img>
             </Link>
         </div>
     )

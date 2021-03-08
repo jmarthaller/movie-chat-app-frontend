@@ -692,7 +692,7 @@ from Polenta app
   position: absolute;
   background-color: #3d82a9;
   margin-left: 240px;
-  margin-top: -150px;
+  margin-top: -250px;
   padding: 0;
   border: 1px solid #888;
   border-radius: 4px;
@@ -811,4 +811,37 @@ from Polenta app
 .confirm-delete button:hover {
   box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
   background: #00a72a;
+}
+
+.user-friends-header {
+  font-size: 12px;;
+  margin: auto;
+  color: #3d82aa;
+  margin: 45px 0 4px 13px;
+}
+
+
+.profile-hr {
+  border: 0;
+  height: 1px;
+  color: #3d82aa;
+  background-color: #3d82aa;
+  background-image: linear-gradient(to right, #ccc, #3d82aa, #ccc);
+}
+
+.user-friends-container {
+  margin-top: -100px;
+}
+
+.other-user-avatar {
+  overflow: hidden;
+  display: inline;
+  flex-wrap: wrap;
+}
+
+.other-user-avatar img {
+  border-radius: 50%;
+  height: 50px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
