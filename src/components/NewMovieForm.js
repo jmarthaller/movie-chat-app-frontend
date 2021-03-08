@@ -55,7 +55,7 @@ function NewMovieForm({ onAddMovieToList }) {
             <br></br>
             {/* <label htmlFor="genre">Genre</label> */}
             <select id="genre" value={newMovieGenre} onChange={(e) => setNewMovieGenre(e.target.value)}>
-                <option value=''>Select Genre</option>
+                <option value=''>Genre</option>
                 <option value="drama">Drama</option>
                 <option value="action">Action</option>
                 <option value="comedy">Comedy</option>

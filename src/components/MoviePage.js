@@ -118,13 +118,16 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
     
     const allReviews = movieReviews.map((review) => {
         return (
-            <div style={{border: "1px solid black"}} key={review.id} className="movie-reviews">
-                <h3>Review By: {review.author}</h3>
-                <p>{review.content}</p>
-                <img style={{height: "25px"}} src={review.author_image} alt="author-logo" ></img>
-                <button onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>
-                <button onClick={(e) => handleLike(review)} className="like-button">❤️ Like Review</button>
-                <p>{review.likes} likes</p>
+            <div key={review.id} className="all-movie-reviews">
+                <hr className="profile-hr" />
+                <img className="movie-page-author-image" src={review.author_image} alt="author-logo" ></img>
+                <div className="all-movie-review-details">
+                    <h3>Review By: <span>{review.author}</span></h3>
+                    <button className="follow-button" onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>
+                    <h5>{review.content}</h5>
+                    <button onClick={(e) => handleLike(review)} className="like-button">❤️ Like Review</button>
+                    <p className="num-likes">{review.likes} likes</p>
+                </div>
             </div>
         )
     })
@@ -170,7 +173,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             }
             <div> 
                 <h4 className="movie-show-review-header">POPULAR REVIEWS</h4>
-                <hr className="movie-show-review-header-hr" />
+
             </div>
               {allReviews}  
         </div>

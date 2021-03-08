@@ -611,6 +611,87 @@ from Polenta app
   background-image: linear-gradient(to right, #ccc, #3d82aa, #ccc);
 }
 
+.movie-page-author-image {
+  border-radius: 50%;
+  height: 50px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.all-movie-review-details {
+  margin: -70px 1px 50px 80px;
+}
+
+.all-movie-reviews h3 {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.801);
+  text-shadow: 1px 1px #c2b092;
+
+}
+
+.all-movie-reviews span {
+  font-size: 42px;
+  color: #fff;
+  text-shadow: 1px 1px #c2b092;
+}
+
+
+.follow-button {
+  background: #00c030;
+  color: #fff;
+  margin: -800px 100px 1px 1px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+
+.follow-button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+
+
+
+.all-movie-reviews h5 {
+  font-size: 23px;
+  font-weight: 900;
+  color: #3d82a8;
+  text-shadow: 1px 1px #c2b092;
+  word-spacing: 4px;
+}
+
+.like-button {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  color: #3d82a8;
+  font-weight: 700;
+}
+
+.all-movie-reviews p {
+  font-size: 14px;
+  font-weight: 900;
+  color: #3d82a8;
+  text-shadow: 1px 1px #c2b092;
+  margin: -20px 1px 1px 125px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .movies-container-header {
   margin: auto;
@@ -1058,5 +1139,10 @@ from Polenta app
 .following-btn:hover {
   box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
   background: #00a72a;
+}
+
+.alt-user-reviews-container {
+  margin: -50px 1px 1px 10px;
+  /* margin-bottom: 50px; */
 }
 
