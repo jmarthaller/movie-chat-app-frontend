@@ -40,6 +40,12 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             .then((r) => r.json())
             .then(data => {
                 console.log(data)
+                setMovieReviews(movieReviews.map((review) => {
+                    if (review.id === data.id) {
+                        return data;
+                    } 
+                    return review
+                }))
             });
     }
     
@@ -55,7 +61,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             setIsLoaded(true);
           });
       }, [id]);
-
+      
 
     if (!isLoaded) return <h2>Loading...</h2>;
 
