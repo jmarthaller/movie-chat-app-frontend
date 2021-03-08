@@ -903,7 +903,7 @@ from Polenta app
 .delete-review-button {
   background: #00c030;
   color: #fff;
-  /* margin: -400px 100px 100px 145px; */
+  margin: 10px 100px 100px 5px;
   padding: .2em 1em;
   font-size: 1rem;
   font-family: inherit;
@@ -917,3 +917,116 @@ from Polenta app
   box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
   background: #00a72a;
 }
+
+
+
+.review-modal-header {
+  padding: 1px 16px;
+  margin-bottom: -50px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #3d82a9;
+  color: #ccdded;
+}
+
+.review-close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Modal Body */
+.review-modal-body {
+  padding: 100px 16px;
+}
+
+/* Modal Content */
+.review-modal-content {
+  position: absolute;
+  background-color: #3d82a9;
+  margin-left: 140px;
+  margin-top: -250px;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 4px;
+  width: 60%;
+  height: 65%;
+  box-shadow: 4 8px 16px 0 rgba(0,0,0,0.2),6 12px 40px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.001s;
+  box-shadow: 0 0 800px 200px rgba(73,73,73,0.91) ;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {left: -400px; opacity: 0}
+  to {left: -200; opacity: 1}
+}
+
+/* .review-modal-body input[type=text] {
+  width: 50%;
+  font-size: 15px;
+  padding: 10px;
+  margin: -35px 0 35px 20px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+} */
+
+.edit-review-text {
+  padding: 10px 10px;
+  margin: auto;
+  margin-top: -50px;
+  height: 10em;
+  /* align-content: center; */
+  width: 90%;
+  border-radius: 5px;
+}
+
+.edit-review-text:focus {
+  background-color: #ccdded;
+  outline: none;
+}
+
+
+.edit-star-rating {
+  width: 21.5%;
+  font-size: 12px;
+  padding: 10px;
+  margin: 20px 0 15px 5px;
+  display: inline-block;
+  border: none;
+  background: #ccdded;
+  border-radius: 10px;
+  cursor: row-resize;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+
+.submit-edit-review-btn {
+  width: 10%;
+  background: #00c030;
+  color: #fff;
+  margin-top: -50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: .3em 1.10em;
+  font-size: 1rem;
+  float: right;
+  font-family: inherit;
+  vertical-align: baseline;
+  border-radius: 6px;
+  border-style: hidden;
+}
+
+.submit-edit-review-btn:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+
+.confirm-delete-review-container {
+  margin-top: -100px;
+}
+

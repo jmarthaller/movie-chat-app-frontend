@@ -74,32 +74,55 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             <h4>Your rating: {personalRating}</h4>
             <button className="edit-review-button" onClick={toggleEditReview}>EDIT REVIEW</button>
             {canEditReview ?
-            <div>
-            <form onSubmit={handleUpdateReview}>
-                <label>
-                Edit Your Review
-                    <input type="text" name="content" value={updatedContent} onChange={handleContentChange} />
-                </label>
-                <select onChange={handleUpdateRating}>
-                    <option value=''>Update Rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <input type="submit" value="Submit" />
-            </form>
-            </div>
-            :
-            null
-            }
-            <br></br>
-            <button className="delete-review-button" onClick={toggleDeleteReview}>DELETE REVIEW</button>
-            {canDeleteReview ?
-            <div>
-                <h2>Are you SURE you want to delete your review?</h2>
-                <button onClick={handleDeleteReview}>Yes, Delete</button>
+            // <div>
+            // <form onSubmit={handleUpdateReview}>
+            //     <label>
+            //     Edit Your Review
+            //         <input type="text" name="content" value={updatedContent} onChange={handleContentChange} />
+            //     </label>
+            //     <select onChange={handleUpdateRating}>
+            //         <option value=''>Update Rating</option>
+            //         <option value="1">1</option>
+            //         <option value="2">2</option>
+            //         <option value="3">3</option>
+            //         <option value="4">4</option>
+            //         <option value="5">5</option>
+            //     </select>
+            //     <input type="submit" value="Submit" />
+            // </form>
+            // </div>
+
+            <div className="review-modal-content">
+                <div className="review-modal-header">
+                    <span className="review-close" onClick={toggleEditReview}>&times;</span>
+                    <h2>Edit Your Review for {movieTitle}</h2>
+                </div>    
+                <div className="review-modal-body">
+                    <form onSubmit={handleUpdateReview}>
+                        <textarea className="edit-review-text" type="text" name="content" value={updatedContent} onChange={handleContentChange}></textarea>
+                        <br></br>
+                        <select className="edit-star-rating" onChange={handleUpdateRating}>
+                            <option value=''>Update Rating</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <br></br>
+                        <input type="submit" value="Submit" className="submit-edit-review-btn" />
+                    </form>
+                    <hr className="profile-hr"></hr>
+                    <button className="delete-review-button" onClick={toggleDeleteReview}>DELETE REVIEW</button>
+                    {canDeleteReview ?
+                        <div className="confirm-delete-review-container">
+                            <h2>Are you SURE you want to delete this review?</h2>
+                            <button className="delete-review-button" onClick={handleDeleteReview}>Yes, Delete</button>
+                        </div>
+                        :
+                        null
+                        }
+                </div>  
             </div>
             :
             null
