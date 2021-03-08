@@ -14,10 +14,6 @@ code {
 }
 
 
-.following-btn:hover {
-  content: 'Unfollow'
-}
-
 .nav-link {
   color: #c2b092;
   font-size: 30px;
@@ -1028,5 +1024,39 @@ from Polenta app
 
 .confirm-delete-review-container {
   margin-top: -100px;
+}
+
+.other-profile-username {
+  color: #fff;
+  margin: -100px 10px 40px 165px;
+  text-shadow: 1px 1px #c2b092;
+}
+
+.other-profile-pic {
+  height: 105px;
+  border-radius: 50px;
+  margin: 20px 0 0 20px;
+  filter: brightness(120%);
+  border: 1px solid white;
+}
+
+.following-btn {
+  background: #00c030;
+  color: #fff;
+  margin: -200px 100px 100px 168px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  border: none;
+  position: relative;
+}
+
+
+.following-btn:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
 }
 

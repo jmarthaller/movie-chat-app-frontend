@@ -36,7 +36,7 @@ function OtherUsersProfilePage({ onDeleteFriendship }) {
 
       const allOtherUserReviews = userToDisplay.reviews.map((review) => {
         return (
-            <div style={{border: "1px solid black"}} key={review.id} className="friend-movie-reviews">
+            <div  key={review.id} className="friend-movie-reviews">
                 <h3>Review For: {review.movie_title}</h3>
                 <img style={{height: "100px"}} src={review.movie_image} alt="author-logo" ></img>
                 <p>{review.content}</p>
@@ -47,9 +47,9 @@ function OtherUsersProfilePage({ onDeleteFriendship }) {
 
     return (
         <div>
-            <h1>{username}</h1>
-            <button className='following-btn' onClick={handleUnfollowOtherUser} style={{background: '#00b020', boxShadow: "inset 0 1px 0 hsl(0deg 0% 100% / 30%)"}}>Following</button>
-            <img className="friend-profile-pic" style={{height: "75px"}} src={avatar} alt="profile-logo"></img>
+            <img className="other-profile-pic" src={avatar} alt="profile-logo"></img>
+            <h1 className="other-profile-username">{username}</h1>
+            <button className='following-btn' onClick={handleUnfollowOtherUser}>UNFOLLOW</button>
             <h2>{username}'s Reviews</h2>
             {allOtherUserReviews}
         </div>
