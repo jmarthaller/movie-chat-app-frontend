@@ -1,7 +1,7 @@
 import React from 'react';
 import MoviesTile from './MoviesTile';
 
-function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntime, updatedMoviesForTime, search }) {
+function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntime, updatedMoviesForTime, search, setSearch }) {
 
         if (!selectedRuntime || selectedRuntime === 'beef') {
 
@@ -22,6 +22,7 @@ function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntim
                 releaseYear={movie.release_year}
                 overview={movie.overview}
                 reviews={movie.reviews}
+                setSearch={setSearch}
                 />
             })
 
@@ -62,6 +63,7 @@ function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntim
             release_year={movie.release_year}
             overview={movie.overview}
             reviews={movie.reviews}
+            setSearch={setSearch}
             />
         })
 

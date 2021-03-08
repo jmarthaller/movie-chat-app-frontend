@@ -49,7 +49,7 @@ function Login({ setCurrentUser }) {
               placeholder="Password"
             />
             <br></br>
-            <input className="login-btn" type="submit" value="Login" />
+            <input className="login-btn" type="submit" value="LOGIN" />
           </form>
         </div>
       );

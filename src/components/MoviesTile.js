@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 
 
 
-function MoviesTile({ id, title, genre, runtime, tagline, release_year, image }) {
-
+function MoviesTile({ id, title, genre, runtime, tagline, release_year, image, setSearch }) {
+    function handleResetSearch() {
+        setSearch("")
+        console.log('hi')
+    }
 
     return (
         <div>
@@ -14,7 +17,7 @@ function MoviesTile({ id, title, genre, runtime, tagline, release_year, image })
             <h4>{release_year}</h4>
             <h4>Runtime: {runtime} minutes</h4>
             <h5>{tagline}</h5>
-            <Link to={`/movies/${id}`}>
+            <Link onClick={handleResetSearch} to={`/movies/${id}`}>
                 Review Movie
             </Link>
         </div>
