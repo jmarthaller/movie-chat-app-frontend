@@ -13,7 +13,7 @@ function MoviesTile({ id, title, genre, runtime, tagline, release_year, image, s
         <div style={{backgroundImage: `url(${image})`}} className="movie-tile">
             <h1 style={{visibility: "hidden"}}>{title}</h1>
             {/* <img  src={image} alt={id}></img> */}
-            <h4>{release_year}</h4>
+            {/* <h4>{release_year}</h4> */}
             {/* <h5>{tagline}</h5> */}
                 {/* Review {title} */}
         </div>
