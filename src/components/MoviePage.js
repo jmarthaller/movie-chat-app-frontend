@@ -9,7 +9,6 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
     const [isLoaded, setIsLoaded] = useState(false);
     const [movieReviews, setMovieReviews] = useState(null)
     const [canLeaveReview, setCanLeaveReview] = useState(false)
-    // const [reviewToIncreaseLikes, setReviewToIncreaseLikes] = useState(null)
 
 
     function handleCanLeaveReview() {

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 
-
 function UserReviews({ id, author, authorImage, movieTitle, movieImage, content, onUpdateReview, onDeleteReview, personalRating}) {
     const [canEditReview, setCanEditReview] = useState(false)
     const [canDeleteReview, setCanDeleteReview] = useState(false)

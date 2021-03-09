@@ -697,7 +697,8 @@ from Polenta app
 
 
 .movie-tile {
-  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   border-radius: 8px;
   height: 400px;
   background-size: 270px;
@@ -710,11 +711,10 @@ from Polenta app
   text-align: center;
   font-family: "Cantarell", monospace;
   color:rgb(255, 254, 254, 0.55);
-  /* border: 1px solid black; */
 }
 
 .movie-tile:hover {
-  border: 3px solid #00c030;
+  border: 2px solid #01e63a;
   transition: all .2s ease;
   -webkit-transition: all .2s ease;
 }
@@ -732,7 +732,7 @@ from Polenta app
 .movies-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1px;
+  gap: 5px;
   /* grid-template-rows: 25% 100px auto; */
   /* margin: 500px; */
   /* flex-direction: row; */
@@ -810,6 +810,7 @@ from Polenta app
 /* Modal Body */
 .profile-modal-body {
   padding: 100px 16px;
+
 }
 
 /* Modal Content */
