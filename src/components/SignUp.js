@@ -5,6 +5,7 @@ function SignUp({ setCurrentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [email, setEmail] = useState("")
 
   const history = useHistory();
 
@@ -15,7 +16,8 @@ function SignUp({ setCurrentUser }) {
     const signupFormData = {
       username,
       password,
-      avatar
+      avatar,
+      email
     }
 
     fetch('http://localhost:3001/signup', {
@@ -23,7 +25,7 @@ function SignUp({ setCurrentUser }) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({"username": signupFormData.username, "password": signupFormData.password, "avatar": signupFormData.avatar}),
+        body: JSON.stringify({"username": signupFormData.username, "password": signupFormData.password, "avatar": signupFormData.avatar, "email": signupFormData.email}),
     })
     .then((r)=>r.json())
     .then((user) => {
@@ -55,6 +57,15 @@ function SignUp({ setCurrentUser }) {
         onChange={(e) => setAvatar(e.target.value)}
         placeholder="Avatar"
       />
+ <br></br>
+       <input
+         type="text"
+         name="email"
+         autoComplete="current-password"
+         value={email}
+         onChange={(e) => setEmail(e.target.value)}
+         placeholder="Email"
+       />
  <br></br>
       <input
         type="password"
