@@ -152,7 +152,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
                 <img className="movie-page-author-image" src={review.author_image} alt="author-logo" ></img>
                 <div className="all-movie-review-details">
                     <h3>Review By: <span>{review.author}</span></h3>
-                    {review.author_object.id === currentUser.id ? null : <button className="follow-button" onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>}
+                    {canLeaveReview ? <button style={{zIndex: "-1"}} className="follow-button" onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button> :  <button className="follow-button" onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>} 
                     <h5>{review.content}</h5>
                     <button onClick={(e) => handleLike(review)} className="like-button">❤️ Like Review</button>
                     <p className="num-likes">{review.likes} likes</p>

@@ -56,6 +56,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         content={review.content}
         onUpdateReview={onUpdateReview}
         onDeleteReview={onDeleteReview}
+        canEditAccount={canEditAccount}
         />
     })
 

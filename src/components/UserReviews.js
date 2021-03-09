@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function UserReviews({ id, author, authorImage, movieTitle, movieImage, content, onUpdateReview, onDeleteReview, personalRating}) {
+function UserReviews({ id, author, authorImage, movieTitle, movieImage, content, onUpdateReview, onDeleteReview, personalRating, canEditAccount}) {
     const [canEditReview, setCanEditReview] = useState(false)
     const [canDeleteReview, setCanDeleteReview] = useState(false)
     const [updatedContent, setUpdatedContent] = useState('')
@@ -62,7 +62,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
         onDeleteReview(id)
     }
 
-    
+    console.log(canEditReview)
     return (
         <div className="user-reviews">
             <hr className="profile-hr" />
@@ -71,7 +71,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             <h2>{movieTitle}</h2>
             <h4>{content}</h4>
             <h4>Your rating: {personalRating}</h4>
-            <button className="edit-review-button" onClick={toggleEditReview}>EDIT REVIEW</button>
+            {canEditReview || canEditAccount ? <button className="edit-review-button" style={{zIndex: "-1"}} onClick={toggleEditReview}>EDIT REVIEW</button> : <button className="edit-review-button" onClick={toggleEditReview}>EDIT REVIEW</button>}
             {canEditReview ?
             // <div>
             // <form onSubmit={handleUpdateReview}>
