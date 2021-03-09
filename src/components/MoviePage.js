@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
+import emailjs from 'emailjs-com';
 
 
 function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setReviews }) {
@@ -99,6 +100,13 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
 
     function handleFollowOtherUser(userToFollow) {
+
+        const templateParams = {
+            followerName: currentUser.username,
+            followeeName: userToFollow.username
+        }
+
+
         const newFollowerRelationship = {
             follower_id: currentUser.id,
             followee_id: userToFollow.id,
@@ -117,6 +125,22 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
         .then(data => {
             onAddNewFollow(data)
             history.push("/profile");
+            // emailjs.sendForm('gmail', 'template_bpoyfaf', e.target, 'YOUR_USER_ID')
+            //     .then((result) => {
+            //         console.log(result.text);
+            //     }, (error) => {
+            //         console.log(error.text);
+            //     });
+            // emailjs.send("gmail","template_bpoyfaf",{
+            //     to_name: userToFollow.username,
+            //     from_name: currentUser.username,
+            //     });
+            emailjs.send('service_6z0h5kv', 'template_bpoyfaf', templateParams, 'user_OgPNXecgtK66tUJbljrqL')
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                }, function(error) {
+                    console.log('FAILED...', error);
+            });           
         })
     }
 
@@ -128,7 +152,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
                 <img className="movie-page-author-image" src={review.author_image} alt="author-logo" ></img>
                 <div className="all-movie-review-details">
                     <h3>Review By: <span>{review.author}</span></h3>
-                    <button className="follow-button" onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>
+                    {review.author_object.id === currentUser.id ? null : <button className="follow-button" onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>}
                     <h5>{review.content}</h5>
                     <button onClick={(e) => handleLike(review)} className="like-button">❤️ Like Review</button>
                     <p className="num-likes">{review.likes} likes</p>
