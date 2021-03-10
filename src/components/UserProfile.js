@@ -11,7 +11,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [avatar, setAvatar] = useState('')
+    const [avatar, setAvatar] = useState("")
 
 
     const  history = useHistory()
