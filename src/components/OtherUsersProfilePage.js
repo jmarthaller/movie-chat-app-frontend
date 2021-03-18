@@ -10,7 +10,7 @@ function OtherUsersProfilePage({ onDeleteFriendship }) {
     const  history = useHistory()
 
     function handleUnfollowOtherUser() {
-        fetch(`http://localhost:3001/friendships/${userToDisplay.following_users[0].id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/friendships/${userToDisplay.following_users[0].id}`, {
         method: "DELETE", 
         headers: {
         "Content-Type": "application/json",
@@ -21,7 +21,7 @@ function OtherUsersProfilePage({ onDeleteFriendship }) {
     }
     
     useEffect(() => {
-        fetch(`http://localhost:3001/users/${id}`)
+        fetch(`${process.env.REACT_APP_RAILS_URL}/users/${id}`)
           .then((r) => r.json())
           .then((user) => {
             setUserToDisplay(user);

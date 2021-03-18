@@ -29,7 +29,7 @@ function NewMovieForm({ onAddMovieToList }) {
             rating: 1
         }
 
-        fetch('http://localhost:3001/movies', {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/movies`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'

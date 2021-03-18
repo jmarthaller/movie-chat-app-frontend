@@ -20,7 +20,7 @@ function SignUp({ setCurrentUser }) {
       email
     }
 
-    fetch('http://localhost:3001/signup', {
+    fetch(`${process.env.REACT_APP_RAILS_URL}/signup`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',

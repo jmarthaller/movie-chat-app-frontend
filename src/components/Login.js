@@ -14,7 +14,7 @@ function Login({ setCurrentUser }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    fetch("http://localhost:3001/login", {
+    fetch(`${process.env.REACT_APP_RAILS_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

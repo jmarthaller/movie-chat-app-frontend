@@ -84,19 +84,19 @@ function App() {
 
 
   useEffect(() => {
-    fetch('http://localhost:3001/movies')
+    fetch(`${process.env.REACT_APP_RAILS_URL}/movies`)
     .then(response => response.json())
     .then(data => setMoviesState(data));
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:3001/reviews')
+    fetch(`${process.env.REACT_APP_RAILS_URL}/reviews`)
     .then(response => response.json())
     .then(data => setReviews(data));
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:3001/friendships')
+    fetch(`${process.env.REACT_APP_RAILS_URL}/friendships`)
     .then(response => response.json())
     .then(data => {
       setFriendshipsState(data)

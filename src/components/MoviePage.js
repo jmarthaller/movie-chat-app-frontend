@@ -30,7 +30,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
         const updateObj = {
             likes: reviewObj.likes + 1
         };
-          fetch(`http://localhost:3001/reviews/${reviewObj.id}`, {
+          fetch(`${process.env.REACT_APP_RAILS_URL}/reviews/${reviewObj.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -53,7 +53,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
 
     useEffect(() => {
-        fetch(`http://localhost:3001/movies/${id}`)
+        fetch(`${process.env.REACT_APP_RAILS_URL}/movies/${id}`)
           .then((r) => r.json())
           .then((movie) => {
             setMovieToDisplay(movie);
@@ -83,7 +83,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             likes: 0
         }
 
-        fetch('http://localhost:3001/reviews', {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/reviews`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
@@ -114,7 +114,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             followee_avatar: userToFollow.avatar
         }
 
-        fetch('http://localhost:3001/friendships', {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/friendships`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'

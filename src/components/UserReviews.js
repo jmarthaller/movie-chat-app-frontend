@@ -36,7 +36,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             personal_rating: updatedRating
         }
 
-        fetch(`http://localhost:3001/reviews/${id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/reviews/${id}`, {
         method: "PATCH", 
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
 
 
     function handleDeleteReview() {
-        fetch(`http://localhost:3001/reviews/${id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/reviews/${id}`, {
         method: "DELETE", 
         headers: {
           "Content-Type": "application/json",

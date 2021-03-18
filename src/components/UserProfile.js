@@ -86,7 +86,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
             email: "putridpotatoesdummyuser@gmail.com"
         }
 
-        fetch(`http://localhost:3001/users/${currentUser.id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/users/${currentUser.id}`, {
         method: "PATCH", 
         headers: {
         "Content-Type": "application/json",
@@ -106,7 +106,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
 
 
     function handleDeleteAccount() {
-        fetch(`http://localhost:3001/users/${currentUser.id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/users/${currentUser.id}`, {
         method: "DELETE", 
         headers: {
         "Content-Type": "application/json",
