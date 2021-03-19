@@ -9,8 +9,9 @@ To play, after starting api server, run:
 npm install && npm start
 
 ## Features
-	-	Search for a movie
-	- Write reviews for a movie
-	-	Follow other users
-	-	Interact with other users' reviews
+1. Search for a movie
+2. Write reviews for a movie
+3. Follow other users
+4. Interact with other users' reviews
+
 
