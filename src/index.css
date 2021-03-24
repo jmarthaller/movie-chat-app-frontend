@@ -1199,3 +1199,12 @@ from Polenta app
   /* margin-bottom: 50px; */
 }
 
+.login-credentials p {
+  margin-left: 15px;
+  height: 20px;
+  font-family: Georgia, serif;
+  color: #3d82aa;
+  text-shadow: 1px 1px 1px #fff;
+  text-align: center;
+}
+

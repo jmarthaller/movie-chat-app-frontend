@@ -51,7 +51,7 @@ function Login({ setCurrentUser }) {
             <br></br>
             <input className="login-btn" type="submit" value="LOGIN" />
           </form>
-          <div>
+          <div className="login-credentials">
             <p>
               To play without creating an account, use the following credentials
               to log in:
