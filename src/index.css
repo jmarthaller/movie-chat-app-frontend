@@ -1201,10 +1201,9 @@ from Polenta app
 
 .login-credentials p {
   margin-left: 15px;
-  height: 20px;
+  height: 25px;
   font-family: Georgia, serif;
   color: #3d82aa;
   text-shadow: 1px 1px 1px #fff;
-  text-align: center;
 }
 
