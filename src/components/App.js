@@ -123,18 +123,6 @@ function App() {
     }
   })
 
-  // function onUpdateLikes(likedReview) {
-  //   console.log(likedReview)
-  //   const updatedReviewForLikes = reviews.map((review) => {
-  //     if (review.id === likedReview.id) {
-  //       return { ...review, likes: likedReview.likes }
-  //     } else {
-  //       return review
-  //     }
-  //   })
-  //   setReviews(updatedReviewForLikes)
-  // }
-
  
   return (
     <div className="app">
