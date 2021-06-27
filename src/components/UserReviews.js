@@ -73,23 +73,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             <h4>Your rating: {personalRating}</h4>
             {canEditReview || canEditAccount ? <button className="edit-review-button" style={{zIndex: "-1"}} onClick={toggleEditReview}>EDIT REVIEW</button> : <button className="edit-review-button" onClick={toggleEditReview}>EDIT REVIEW</button>}
             {canEditReview ?
-            // <div>
-            // <form onSubmit={handleUpdateReview}>
-            //     <label>
-            //     Edit Your Review
-            //         <input type="text" name="content" value={updatedContent} onChange={handleContentChange} />
-            //     </label>
-            //     <select onChange={handleUpdateRating}>
-            //         <option value=''>Update Rating</option>
-            //         <option value="1">1</option>
-            //         <option value="2">2</option>
-            //         <option value="3">3</option>
-            //         <option value="4">4</option>
-            //         <option value="5">5</option>
-            //     </select>
-            //     <input type="submit" value="Submit" />
-            // </form>
-            // </div>
+          
 
             <div className="review-modal-content">
                 <div className="review-modal-header">

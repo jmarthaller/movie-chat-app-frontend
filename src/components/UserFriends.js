@@ -15,6 +15,4 @@ function UserFriends({ followeeName, followeeAvatar, followeeId }) {
     )
 }
 
-
-
 export default UserFriends;
