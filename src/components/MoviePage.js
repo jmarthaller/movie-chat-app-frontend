@@ -125,16 +125,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
         .then(data => {
             onAddNewFollow(data)
             history.push("/profile");
-            // emailjs.sendForm('gmail', 'template_bpoyfaf', e.target, 'YOUR_USER_ID')
-            //     .then((result) => {
-            //         console.log(result.text);
-            //     }, (error) => {
-            //         console.log(error.text);
-            //     });
-            // emailjs.send("gmail","template_bpoyfaf",{
-            //     to_name: userToFollow.username,
-            //     from_name: currentUser.username,
-            //     });
+
             emailjs.send('service_6z0h5kv', 'template_bpoyfaf', templateParams, 'user_OgPNXecgtK66tUJbljrqL')
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
