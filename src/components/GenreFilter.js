@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function GenreFilter({  handleGenreChange }) {
     return (
         <div className="genre-filter">
