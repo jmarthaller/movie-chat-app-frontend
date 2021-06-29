@@ -155,8 +155,6 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             </div>
         )
     })
-
-
     
     return (
         <div className="movie-show-page">
