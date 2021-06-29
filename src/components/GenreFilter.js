@@ -25,3 +25,10 @@ function GenreFilter({  handleGenreChange }) {
 }
 
 export default GenreFilter;
+
+
+
+
+
+
+
