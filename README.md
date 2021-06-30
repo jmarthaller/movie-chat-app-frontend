@@ -5,7 +5,7 @@ A platform for users to log the movies they have watched, write reviews, and fol
 
 Requires [Putrid Potatoes backend](https://github.com/jmarthaller/movie-chat-app-backend)
 
-To play, after starting api server, run:
+To run on your local machine, after starting api server, run:
 
 `npm install && npm start`
 
