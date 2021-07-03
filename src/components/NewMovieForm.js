@@ -38,7 +38,7 @@ function NewMovieForm({ onAddMovieToList }) {
         })
         const jsonify = await response.json()
         onAddMovieToList(jsonify)
-        history.push(`/movies/${data.id}`);
+        history.push(`/movies/${jsonify.id}`);
         e.target.reset()
     }
 
