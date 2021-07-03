@@ -86,16 +86,16 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
             email: "putridpotatoesdummyuser@gmail.com"
         }
 
-        const response = fetch(`${process.env.REACT_APP_RAILS_URL}/users/${currentUser.id}`, {
+        const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/users/${currentUser.id}`, {
         method: "PATCH", 
         headers: {
         "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
         })
-        const jsonify = await response.json();
-        onUpdateUserInfo(jsonify);
-        history.push("/profile");
+        const jsonify = await response.json()
+        onUpdateUserInfo(jsonify)
+        history.push("/profile")
         setAvatar("")
         setUsername("")
         setPassword("")
