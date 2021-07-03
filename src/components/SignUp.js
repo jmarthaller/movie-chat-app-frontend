@@ -10,7 +10,7 @@ function SignUp({ setCurrentUser }) {
   const history = useHistory();
 
 
-  function handleSubmit(e){
+  async function handleSubmit(e){
     e.preventDefault();
 
     const signupFormData = {
@@ -20,18 +20,16 @@ function SignUp({ setCurrentUser }) {
       email
     }
 
-    fetch(`${process.env.REACT_APP_RAILS_URL}/signup`, {
+    const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/signup`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({"username": signupFormData.username, "password": signupFormData.password, "avatar": signupFormData.avatar, "email": signupFormData.email}),
     })
-    .then((r)=>r.json())
-    .then((user) => {
-        setCurrentUser(user);
-        history.push('/');
-    })
+    const jsonify = await response.json()
+    setCurrentUser(jsonify);
+    history.push('/');
 }    
 
 
