@@ -71,10 +71,9 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             <h2>{movieTitle}</h2>
             <h4>{content}</h4>
             <h4>Your rating: {personalRating}</h4>
-            {canEditReview || canEditAccount ? <button className="edit-review-button" style={{zIndex: "-1"}} onClick={toggleEditReview}>EDIT REVIEW</button> : <button className="edit-review-button" onClick={toggleEditReview}>EDIT REVIEW</button>}
-            {canEditReview ?
+            { canEditReview || canEditAccount ? <button className="edit-review-button" style={{zIndex: "-1"}} onClick={toggleEditReview}>EDIT REVIEW</button> : <button className="edit-review-button" onClick={toggleEditReview}>EDIT REVIEW</button>}
+            { canEditReview ?
           
-
             <div className="review-modal-content">
                 <div className="review-modal-header">
                     <span className="review-close" onClick={toggleEditReview}>&times;</span>
@@ -82,7 +81,13 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
                 </div>    
                 <div className="review-modal-body">
                     <form onSubmit={handleUpdateReview}>
-                        <textarea className="edit-review-text" type="text" name="content" value={updatedContent} onChange={handleContentChange}></textarea>
+                        <textarea 
+                            className="edit-review-text" 
+                            type="text" 
+                            name="content" 
+                            value={updatedContent} 
+                            onChange={handleContentChange}>
+                        </textarea>
                         <br></br>
                         <select className="edit-star-rating" onChange={handleUpdateRating}>
                             <option value=''>Update Rating</option>
@@ -97,18 +102,17 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
                     </form>
                     <hr className="profile-hr"></hr>
                     <button className="delete-review-button" onClick={toggleDeleteReview}>DELETE REVIEW</button>
-                    {canDeleteReview ?
-                        <div className="confirm-delete-review-container">
-                            <h2>Are you SURE you want to delete this review?</h2>
-                            <button className="delete-review-button" onClick={handleDeleteReview}>Yes, Delete</button>
-                        </div>
-                        :
-                        null
-                        }
+                    { canDeleteReview 
+                        ?
+                            <div className="confirm-delete-review-container">
+                                <h2>Are you SURE you want to delete this review?</h2>
+                                <button className="delete-review-button" onClick={handleDeleteReview}>Yes, Delete</button>
+                            </div>
+                        :   null 
+                    }
                 </div>  
             </div>
-            :
-            null
+            : null
             }
             </div>
         </div>
