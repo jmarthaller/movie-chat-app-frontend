@@ -50,13 +50,13 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_RAILS_URL}/movies/${id}`)
-          .then((r) => r.json())
-          .then((movie) => {
-            setMovieToDisplay(movie);
-            setMovieReviews(movie.reviews)
-            setIsLoaded(true);
-          });
+        async function fetchMovieById()
+        const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/movies/${id}`)
+        const jsonify = response.json()
+        setMovieToDisplay(jsonify);
+        setMovieReviews(jsonify.reviews)
+        setIsLoaded(true);
+        fetchMovieById();
       }, [id]);
       
 
@@ -115,13 +115,9 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
         const jsonify = await response.json();
         onAddNewFollow(jsonify)
         history.push("/profile");
-        emailjs.send('service_6z0h5kv', 'template_bpoyfaf', templateParams, 'user_OgPNXecgtK66tUJbljrqL')
-        //     .then(function(response) {
-        //         console.log('SUCCESS!', response.status, response.text);
-        //     }, function(error) {
-        //         console.log('FAILED...', error);
-        // });           
-}
+        emailjs.send('service_6z0h5kv', 'template_bpoyfaf', templateParams, 'user_OgPNXecgtK66tUJbljrqL')         
+    }
+    
 
     
     const allReviews = movieReviews.map((review) => {
