@@ -65,7 +65,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
     const { title, image, genre, runtime, tagline, release_year, overview } = movieToDisplay;
 
-    function handleSubmitReview(e) {
+    async function handleSubmitReview(e) {
         e.preventDefault();
 
         const newReview = {
@@ -80,57 +80,48 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             likes: 0
         }
 
-        fetch(`${process.env.REACT_APP_RAILS_URL}/reviews`, {
+        const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/reviews`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newReview)
         })
-        .then((r) => r.json())
-        .then(data => {
-            onAddReview(data)
-            history.push("/profile");
-        })
+        const jsonify = await response.json();
+        onAddReview(jsonify);
+        history.push("/profile");
         e.target.reset()
     }
 
 
-    function handleFollowOtherUser(userToFollow) {
-
+    async function handleFollowOtherUser(userToFollow) {
         const templateParams = {
             followerName: currentUser.username,
             followeeName: userToFollow.username
         }
-
-
         const newFollowerRelationship = {
             follower_id: currentUser.id,
             followee_id: userToFollow.id,
             followee_username: userToFollow.username,
             followee_avatar: userToFollow.avatar
         }
-
-        fetch(`${process.env.REACT_APP_RAILS_URL}/friendships`, {
+        const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/friendships`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newFollowerRelationship)
         })
-        .then((r) => r.json())
-        .then(data => {
-            onAddNewFollow(data)
-            history.push("/profile");
-
-            emailjs.send('service_6z0h5kv', 'template_bpoyfaf', templateParams, 'user_OgPNXecgtK66tUJbljrqL')
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                }, function(error) {
-                    console.log('FAILED...', error);
-            });           
-        })
-    }
+        const jsonify = await response.json();
+        onAddNewFollow(jsonify)
+        history.push("/profile");
+        emailjs.send('service_6z0h5kv', 'template_bpoyfaf', templateParams, 'user_OgPNXecgtK66tUJbljrqL')
+        //     .then(function(response) {
+        //         console.log('SUCCESS!', response.status, response.text);
+        //     }, function(error) {
+        //         console.log('FAILED...', error);
+        // });           
+}
 
     
     const allReviews = movieReviews.map((review) => {
