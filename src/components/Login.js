@@ -12,20 +12,18 @@ function Login({ setCurrentUser }) {
   }
 
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    fetch(`${process.env.REACT_APP_RAILS_URL}/login`, {
+    const reposnse = await fetch(`${process.env.REACT_APP_RAILS_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(formData),
-  })
-    .then((r) => r.json())
-    .then((user) => {
-      setCurrentUser(user);
-      history.push("/");
-    }); 
+    })
+    const jsonify = await response.json()
+    setCurrentUser(jsonify);
+    history.push("/");  
   }
  
   
