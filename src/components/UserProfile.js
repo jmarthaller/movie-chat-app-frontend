@@ -76,7 +76,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     }
 
 
-    function handleUpdateAccount(e) {
+    async function handleUpdateAccount(e) {
         e.preventDefault()
 
         const formData = {
@@ -86,22 +86,20 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
             email: "putridpotatoesdummyuser@gmail.com"
         }
 
-        fetch(`${process.env.REACT_APP_RAILS_URL}/users/${currentUser.id}`, {
+        const response = fetch(`${process.env.REACT_APP_RAILS_URL}/users/${currentUser.id}`, {
         method: "PATCH", 
         headers: {
         "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
         })
-        .then((response) => response.json())
-        .then((data) => {
-            onUpdateUserInfo(data)
-            history.push("/profile");
-      })
-      setAvatar("")
-      setUsername("")
-      setPassword("")
-      toggleEditProfile()
+        const jsonify = await response.json();
+        onUpdateUserInfo(jsonify);
+        history.push("/profile");
+        setAvatar("")
+        setUsername("")
+        setPassword("")
+        toggleEditProfile()
     }
 
 

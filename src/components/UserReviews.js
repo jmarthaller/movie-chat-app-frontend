@@ -60,7 +60,6 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
         onDeleteReview(id)
     }
 
-    console.log(canEditReview)
     return (
         <div className="user-reviews">
             <hr className="profile-hr" />
