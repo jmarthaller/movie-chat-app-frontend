@@ -84,23 +84,30 @@ function App() {
 
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_RAILS_URL}/movies`)
-    .then(response => response.json())
-    .then(data => setMoviesState(data));
+    const fetchMoviesOnLaunch = async () => {
+      const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/movies`);
+      const jsonify = await response.json();
+      setMoviesState(jsonify);
+    }
+    fetchMoviesOnLaunch();
   }, [])
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_RAILS_URL}/reviews`)
-    .then(response => response.json())
-    .then(data => setReviews(data));
+    const fetchReviewsOnLaunch = async () => {
+      const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/reviews`);
+      const jsonify = await response.json();
+      setReviews(jsonify);
+    }
+    fetchReviewsOnLaunch();
   }, [])
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_RAILS_URL}/friendships`)
-    .then(response => response.json())
-    .then(data => {
-      setFriendshipsState(data)
-    });
+    const fetchFriendshipsOnLaunch = async () => {
+      const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/friendships`);
+      const jsonify = await response.json();
+      setFriendshipsState(jsonify);
+    }
+    fetchFriendshipsOnLaunch();
   }, [])
 
 
