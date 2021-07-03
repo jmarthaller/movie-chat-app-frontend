@@ -132,20 +132,42 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
                 </div>    
                 <div className="profile-modal-body">
                         <form onSubmit={handleUpdateAccount}>
-                            <input type="text" name="username" value={username} placeholder='New Username...' onChange={handleNameChange} />
+                            <input 
+                                type="text" 
+                                name="username" 
+                                value={username} 
+                                placeholder='New Username...' 
+                                onChange={handleNameChange} 
+                            />
                             <br></br>
-                             <input type="password" name="password" value={password} placeholder='New Password...' onChange={handlePasswordChange} />
+                             <input 
+                                type="password" 
+                                name="password" 
+                                value={password} 
+                                placeholder='New Password...' 
+                                onChange={handlePasswordChange} /
+                            >
                              <br></br>
-                            <input type="text" name="avatar" value={avatar} placeholder='New Avatar...' onChange={handleAvatarChange} />
+                            <input 
+                                type="text" 
+                                name="avatar" 
+                                value={avatar} 
+                                placeholder='New Avatar...' 
+                                onChange={handleAvatarChange} 
+                            />
                              <br></br>
                              <input className="edit-profile-submit" type="submit" value="Submit" />
                          </form>
-                         <button className="delete-profile-submit" onClick={toggleDeleteProfile}>{canDeleteAccount ? "I would Never!" : "Delete Account"}</button>
+                         <button 
+                            className="delete-profile-submit" 
+                            onClick={toggleDeleteProfile}>
+                                {canDeleteAccount ? "I would Never!" : "Delete Account"}
+                            </button>
                          {canDeleteAccount ?
-                        <div className="confirm-delete">
-                            <h2>Are you SURE you want to delete your account???</h2>
-                            <button  onClick={handleDeleteAccount}>Yes, I'd like to be banished to the shadow realm</button>
-                        </div>
+                            <div className="confirm-delete">
+                                <h2>Are you SURE you want to delete your account???</h2>
+                                <button  onClick={handleDeleteAccount}>Yes, I'd like to be banished to the shadow realm</button>
+                            </div>
                         :
                         null
                         }
