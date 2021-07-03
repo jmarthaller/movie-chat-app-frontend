@@ -50,14 +50,16 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
 
     useEffect(() => {
-        async function fetchMovieById()
-        const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/movies/${id}`)
-        const jsonify = response.json()
-        setMovieToDisplay(jsonify);
-        setMovieReviews(jsonify.reviews)
-        setIsLoaded(true);
+        async function fetchMovieById() {
+            const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/movies/${id}`)
+            const jsonify = response.json()
+            setMovieToDisplay(jsonify);
+            setMovieReviews(jsonify.reviews)
+            setIsLoaded(true);
+        }
         fetchMovieById();
       }, [id]);
+
       
 
     if (!isLoaded) return <h2>Loading...</h2>;
