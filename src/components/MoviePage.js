@@ -26,27 +26,24 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
     }
 
 
-    function handleLike(reviewObj){
+    async function handleLike(reviewObj){
         const updateObj = {
             likes: reviewObj.likes + 1
         };
-          fetch(`${process.env.REACT_APP_RAILS_URL}/reviews/${reviewObj.id}`, {
+          const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/reviews/${reviewObj.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(updateObj),
           })
-            .then((r) => r.json())
-            .then(data => {
-                console.log(data)
-                setMovieReviews(movieReviews.map((review) => {
-                    if (review.id === data.id) {
-                        return data;
-                    } 
-                    return review
-                }))
-            });
+            const jsonify = await response.json()
+            setMovieReviews(movieReviews.map((review) => {
+                if (review.id === jsonify.id) {
+                    return jsonify;
+                } 
+                return review
+            }))
     }
     
 
