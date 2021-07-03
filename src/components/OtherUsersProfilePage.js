@@ -21,12 +21,13 @@ function OtherUsersProfilePage({ onDeleteFriendship }) {
     }
     
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_RAILS_URL}/users/${id}`)
-          .then((r) => r.json())
-          .then((user) => {
-            setUserToDisplay(user);
+        const fetchOtherUsersProfilePage = async () => {
+            const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/users/${id}`)
+            const jsonify = await response.json()
+            setUserToDisplay(jsonify);
             setIsUserLoaded(true);
-          });
+        }
+        fetchOtherUsersProfilePage();
       }, [id]);
 
       if (!isUserLoaded) return <h2>Loading...</h2>;
