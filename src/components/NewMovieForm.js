@@ -15,7 +15,7 @@ function NewMovieForm({ onAddMovieToList }) {
     const  history = useHistory()
 
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
 
         const newMovieToPost = {
@@ -29,18 +29,16 @@ function NewMovieForm({ onAddMovieToList }) {
             rating: 1
         }
 
-        fetch(`${process.env.REACT_APP_RAILS_URL}/movies`, {
+        const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/movies`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newMovieToPost)
         })
-        .then((r) => r.json())
-        .then(data => {
-            onAddMovieToList(data)
-            history.push(`/movies/${data.id}`);
-        })
+        const jsonify = await response.json()
+        onAddMovieToList(jsonify)
+        history.push(`/movies/${data.id}`);
         e.target.reset()
     }
 
