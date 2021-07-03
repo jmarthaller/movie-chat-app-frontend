@@ -28,7 +28,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
     }
 
 
-    function handleUpdateReview(e) {
+    async function handleUpdateReview(e) {
         e.preventDefault()
         
         const formData = {
@@ -36,17 +36,15 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             personal_rating: updatedRating
         }
 
-        fetch(`${process.env.REACT_APP_RAILS_URL}/reviews/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_RAILS_URL}/reviews/${id}`, {
         method: "PATCH", 
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({"content": formData.content, personal_rating: parseInt(formData.personal_rating)}),
         })
-        .then((response) => response.json())
-        .then((data) => {
-          onUpdateReview(data, formData)
-        })
+        const jsonify = await response.json()
+        onUpdateReview(jsonify, formData)
         setUpdatedContent("")
         setCanEditReview()
     }
